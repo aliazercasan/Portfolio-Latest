@@ -1,0 +1,2024 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Developer Portfolio - Laravel & MySQL Specialist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --accent-light: #63b3ed;
+            --success-color: #38a169;
+            --text-dark: #2d3748;
+            --text-light: #718096;
+            --text-muted: #a0aec0;
+            --bg-light: #f7fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+        }
+
+        .navbar {
+            background: rgba(26, 54, 93, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: -0.025em;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            text-decoration: none !important;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-light) !important;
+            text-decoration: none !important;
+        }
+
+        .nav-link:focus {
+            color: var(--accent-light) !important;
+            text-decoration: none !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background-color: var(--accent-light);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile navigation fixes */
+        @media (max-width: 991.98px) {
+            .nav-link::after {
+                display: none;
+            }
+
+            .nav-link {
+                padding: 0.75rem 1rem;
+                border-radius: 8px;
+                margin: 2px 0;
+            }
+
+            .nav-link:hover {
+                background-color: rgba(99, 179, 237, 0.1);
+                text-decoration: none !important;
+            }
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 50%, var(--accent-color) 100%);
+            color: white;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            color: var(--text-dark);
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+            letter-spacing: -0.025em;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-light));
+            border-radius: 2px;
+        }
+
+        .card {
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-light);
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-badge {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 4px;
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .skill-badge:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-light));
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            background: linear-gradient(135deg, #2c5aa0, var(--accent-color));
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-light {
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            color: var(--text-dark);
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline-light {
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: white;
+            border-radius: 8px;
+            padding: 10px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-light:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: white;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .bg-light {
+            background-color: var(--bg-light) !important;
+        }
+
+        .text-primary {
+            color: var(--accent-color) !important;
+        }
+
+        .text-success {
+            color: var(--success-color) !important;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        .badge {
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 6px;
+        }
+
+        .badge.bg-primary {
+            background: var(--accent-color) !important;
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 40px;
+        }
+
+        /* Certification Modal Styles */
+        .cert-clickable {
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .cert-clickable:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .cert-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .cert-clickable:hover .cert-overlay {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .cert-overlay i {
+            color: white;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .cert-clickable:hover .cert-overlay i {
+            transform: scale(1.1);
+        }
+
+        .multiple-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 8px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .multiple-indicator i {
+            font-size: 1.2rem;
+        }
+
+        .cert-count {
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .certification-image-container {
+            height: 300px;
+            overflow: hidden;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        /* Modal Styles */
+        #certificationModal .modal-dialog {
+            max-width: 90vw;
+            margin: 1.75rem auto;
+        }
+
+        #certificationModal .modal-content {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        #certificationModal .modal-header {
+            background: var(--primary-color);
+            color: white;
+            border-bottom: none;
+            padding: 1.5rem;
+        }
+
+        #certificationModal .modal-title {
+            font-weight: 600;
+            font-size: 1.25rem;
+        }
+
+        #certificationModal .btn-close {
+            filter: invert(1);
+            opacity: 0.8;
+        }
+
+        #certificationModal .btn-close:hover {
+            opacity: 1;
+        }
+
+        #certificationModal .modal-body {
+            padding: 0;
+            position: relative;
+            background: #f8f9fa;
+        }
+
+        #modalCertImage {
+            width: 100%;
+            height: auto;
+            max-height: 75vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Navigation buttons inside modal */
+        .cert-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1050;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .cert-nav-btn:hover {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .cert-prev {
+            left: 20px;
+        }
+
+        .cert-next {
+            right: 20px;
+        }
+
+        .cert-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Responsive modal */
+        @media (max-width: 768px) {
+            #certificationModal .modal-dialog {
+                max-width: 95vw;
+                margin: 1rem auto;
+            }
+
+            .cert-nav-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .cert-prev {
+                left: 10px;
+            }
+
+            .cert-next {
+                right: 10px;
+            }
+        }
+
+        /* Scroll Animation Styles */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-on-scroll.animate-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .animate-fade-in {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+
+        .animate-fade-in.animate-visible {
+            opacity: 1;
+        }
+
+        /* Modern Certification Styles */
+        .cert-header-badge {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .cert-title-underline {
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0.5));
+            border-radius: 2px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            to {
+                box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        .cert-card-modern {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            cursor: pointer;
+            height: 350px;
+        }
+
+        .cert-card-modern:hover {
+            transform: translateY(-15px) scale(1.02);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .cert-card-modern:hover .cert-glow {
+            opacity: 1;
+        }
+
+        .cert-card-inner {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+            border-radius: 20px;
+        }
+
+        .cert-image-wrapper {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .cert-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .cert-card-modern:hover .cert-image {
+            transform: scale(1.1);
+        }
+
+        .cert-shine {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+            opacity: 0;
+        }
+
+        .cert-card-modern:hover .cert-shine {
+            opacity: 1;
+            animation: shine 0.6s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+
+        .cert-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .cert-card-modern:hover .cert-card-overlay {
+            opacity: 1;
+        }
+
+        .cert-badge-collection {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .cert-badge.primary {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .cert-badge.verified {
+            background: rgba(34, 197, 94, 0.3);
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+
+        .cert-action-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .cert-action-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .cert-glow {
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: -1;
+            border-radius: 50%;
+            filter: blur(20px);
+        }
+
+        .cert-stats-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .cert-stat-item {
+            color: white;
+            text-align: center;
+        }
+
+        .cert-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(45deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cert-stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Modern Modal Styles */
+        .bg-gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        }
+
+        .cert-modal-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .cert-modal-image-container {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cert-modal-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .cert-modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.3) 100%);
+            pointer-events: none;
+        }
+
+        .cert-nav-btn-modern {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cert-nav-btn-modern:hover {
+            background: white;
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cert-prev-modern {
+            left: 30px;
+        }
+
+        .cert-next-modern {
+            right: 30px;
+        }
+
+        .cert-counter-modern {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .cert-counter-bg {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cert-verification-badge {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(34, 197, 94, 0.9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+        }
+
+        .cert-modal-info {
+            flex: 1;
+        }
+
+        .cert-modal-actions .btn {
+            border-radius: 20px;
+            font-weight: 600;
+            padding: 8px 16px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .cert-card-modern {
+                height: 280px;
+            }
+
+            .cert-stat-number {
+                font-size: 2rem;
+            }
+
+            .cert-nav-btn-modern {
+                width: 50px;
+                height: 50px;
+            }
+
+            .cert-prev-modern {
+                left: 15px;
+            }
+
+            .cert-next-modern {
+                right: 15px;
+            }
+
+            .cert-verification-badge {
+                top: 15px;
+                right: 15px;
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-slide-left.animate-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-slide-right.animate-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .animate-scale.animate-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .animate-bounce-in {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .animate-bounce-in.animate-visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Staggered animation delays */
+        .animate-delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .animate-delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .animate-delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .animate-delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        .animate-delay-5 {
+            transition-delay: 0.5s;
+        }
+
+        .animate-delay-6 {
+            transition-delay: 0.6s;
+        }
+
+        /* Navbar scroll effect */
+        .navbar.scrolled {
+            background: rgba(26, 54, 93, 0.98) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-toggle i {
+            font-size: 1.5rem;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #1a1a2e;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .navbar {
+            background: rgba(15, 15, 25, 0.95) !important;
+        }
+
+        body.dark-mode .hero-section {
+            background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        body.dark-mode .bg-light {
+            background-color: #16213e !important;
+        }
+
+        body.dark-mode .card {
+            background-color: #1e2a3a;
+            border-color: #2d3748;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .card-title,
+        body.dark-mode .section-title,
+        body.dark-mode h1,
+        body.dark-mode h2,
+        body.dark-mode h3,
+        body.dark-mode h4,
+        body.dark-mode h5,
+        body.dark-mode h6 {
+            color: #f0f0f0;
+        }
+
+        body.dark-mode .text-dark {
+            color: #e0e0e0 !important;
+        }
+
+        body.dark-mode .text-muted {
+            color: #a0aec0 !important;
+        }
+
+        body.dark-mode footer {
+            background: #0f0f1e;
+        }
+
+        /* CV Download Button */
+        .cv-download-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+            background: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .cv-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            background: #2f855a;
+            color: white;
+        }
+
+        .cv-download-btn i {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .theme-toggle {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .theme-toggle i {
+                font-size: 1.2rem;
+            }
+
+            .cv-download-btn {
+                bottom: 20px;
+                left: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+
+            .cv-download-btn span {
+                display: none;
+            }
+
+            .cv-download-btn {
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                padding: 0;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="fas fa-code me-2"></i>I am Aliazer
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container hero-content">
+            <div class="row align-items-center py-5">
+                <div class="col-lg-8 mb-5 mb-lg-0">
+                    <div class="mb-3 animate-fade-in">
+                        <span class="badge bg-light text-dark px-3 py-2">Available for Opportunities</span>
+                    </div>
+                    <h1 class="display-3 fw-bold mb-3 animate-slide-left animate-delay-1" style="line-height: 1.2;">
+                        Backend Developer
+                        <span class="d-block text-light animate-slide-left animate-delay-2" style="opacity: 0.9;">&
+                            Laravel Specialist</span>
+                    </h1>
+                    <p class="lead mb-4 animate-slide-left animate-delay-3"
+                        style="font-size: 1.2rem; opacity: 0.95; max-width: 600px;">
+                        Passionate backend developer specializing in Laravel framework and MySQL database management.
+                        Building robust, scalable server-side solutions with clean code practices and modern development
+                        approaches.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 animate-slide-left animate-delay-4">
+                        <a href="#projects" class="btn btn-light btn-lg px-4 py-3">
+                            <i class="fas fa-code me-2"></i>View Projects
+                        </a>
+                        <a href="#contact" class="btn btn-outline-light btn-lg px-4 py-3">
+                            <i class="fas fa-envelope me-2"></i>Get In Touch
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="position-relative animate-bounce-in animate-delay-3">
+                        <div class="bg-white rounded-4 p-4 d-inline-block shadow-lg" style="transform: rotate(-5deg);">
+                            <img src="assets/me.jpg" alt="Aliazer Solaiman - Backend Developer"
+                                class="img-fluid rounded-3" style="width: 200px; height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="position-absolute top-0 end-0 bg-success rounded-circle p-3 shadow"
+                            style="transform: translate(20px, -20px);">
+                            <i class="fas fa-check text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-5" style="padding: 100px 0 !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-title animate-on-scroll">About Me</h2>
+                    <p class="lead text-muted mb-5 animate-fade-in animate-delay-1"
+                        style="max-width: 600px; margin: 0 auto;">
+                        Dedicated backend developer with a passion for creating efficient, scalable solutions
+                    </p>
+                </div>
+            </div>
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="pe-lg-4 animate-slide-left">
+                        <h3 class="h2 fw-bold mb-4 text-dark">Building Tomorrow's Web Solutions</h3>
+                        <p class="mb-4 text-muted" style="font-size: 1.1rem; line-height: 1.7;">
+                            I'm <strong class="text-dark">Aliazer Casan P. Solaiman</strong>, a dedicated backend
+                            developer with a unique blend of
+                            software development expertise and hardware knowledge. My journey began with computer
+                            assembly and
+                            troubleshooting, providing me with deep insights into the symbiotic relationship between
+                            hardware and software.
+                        </p>
+                        <p class="mb-4 text-muted" style="font-size: 1.1rem; line-height: 1.7;">
+                            Specializing in the <strong class="text-dark">Laravel framework</strong> and <strong
+                                class="text-dark">MySQL database management</strong>,
+                            I create robust, scalable backend systems that power modern web applications. My
+                            expertise extends to
+                            RESTful API development, version control with Git, and seamless frontend integration.
+                        </p>
+                        <p class="mb-5 text-muted" style="font-size: 1.1rem; line-height: 1.7;">
+                            I'm committed to continuous learning and contributing to impactful projects while
+                            expanding my expertise
+                            into advanced backend technologies and cloud-based solutions.
+                        </p>
+
+                        <div class="row g-4">
+                            <div class="col-6">
+                                <div class="text-center p-4 bg-light rounded-3 animate-scale animate-delay-1">
+                                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                                        style="width: 60px; height: 60px;">
+                                        <i class="fas fa-database fa-lg text-white"></i>
+                                    </div>
+                                    <h6 class="fw-bold mb-2">Database Architecture</h6>
+                                    <p class="small text-muted mb-0">MySQL optimization & schema design</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center p-4 bg-light rounded-3 animate-scale animate-delay-2">
+                                    <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
+                                        style="width: 60px; height: 60px;">
+                                        <i class="fab fa-laravel fa-lg text-white"></i>
+                                    </div>
+                                    <h6 class="fw-bold mb-2">Laravel Mastery</h6>
+                                    <p class="small text-muted mb-0">MVC architecture & API development</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ps-lg-4 animate-slide-right">
+                        <div class="card border-0 shadow-lg">
+                            <div class="card-body p-4">
+                                <div class="d-flex align-items-center mb-4">
+                                    <div class="bg-success rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                        style="width: 50px; height: 50px;">
+                                        <i class="fas fa-star text-white"></i>
+                                    </div>
+                                    <h5 class="card-title mb-0 fw-bold">Core Strengths & Values</h5>
+                                </div>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <div
+                                            class="d-flex align-items-center p-3 bg-light rounded-3 animate-slide-right animate-delay-1">
+                                            <i class="fas fa-lightbulb text-warning me-3 fa-lg"></i>
+                                            <div>
+                                                <h6 class="mb-1 fw-semibold">Problem-Solving Mindset</h6>
+                                                <small class="text-muted">Analytical approach to complex
+                                                    challenges</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div
+                                            class="d-flex align-items-center p-3 bg-light rounded-3 animate-slide-right animate-delay-2">
+                                            <i class="fas fa-search text-info me-3 fa-lg"></i>
+                                            <div>
+                                                <h6 class="mb-1 fw-semibold">Attention to Detail</h6>
+                                                <small class="text-muted">Precision in code quality and
+                                                    architecture</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div
+                                            class="d-flex align-items-center p-3 bg-light rounded-3 animate-slide-right animate-delay-3">
+                                            <i class="fas fa-graduation-cap text-primary me-3 fa-lg"></i>
+                                            <div>
+                                                <h6 class="mb-1 fw-semibold">Continuous Learning</h6>
+                                                <small class="text-muted">Always exploring new technologies</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div
+                                            class="d-flex align-items-center p-3 bg-light rounded-3 animate-slide-right animate-delay-4">
+                                            <i class="fas fa-tools text-secondary me-3 fa-lg"></i>
+                                            <div>
+                                                <h6 class="mb-1 fw-semibold">Hardware Expertise</h6>
+                                                <small class="text-muted">Deep understanding of system
+                                                    architecture</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div
+                                            class="d-flex align-items-center p-3 bg-light rounded-3 animate-slide-right animate-delay-5">
+                                            <i class="fas fa-code text-success me-3 fa-lg"></i>
+                                            <div>
+                                                <h6 class="mb-1 fw-semibold">Clean Code Practices</h6>
+                                                <small class="text-muted">Maintainable and scalable
+                                                    solutions</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-5 bg-light" style="padding: 100px 0 !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-title animate-on-scroll">Technical Expertise</h2>
+                    <p class="lead text-muted mb-5 animate-fade-in animate-delay-1"
+                        style="max-width: 600px; margin: 0 auto;">
+                        Comprehensive skill set focused on modern backend development and system architecture
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-scale animate-delay-1">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-code text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">Backend Development</h5>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="skill-badge">Laravel</span>
+                                <span class="skill-badge">PHP</span>
+                                <span class="skill-badge">MySQL</span>
+                                <span class="skill-badge">PostgreSQL</span>
+                                <span class="skill-badge">RESTful APIs</span>
+                                <span class="skill-badge">Eloquent ORM</span>
+                                <span class="skill-badge">Database Design</span>
+                                <span class="skill-badge">SQL Optimization</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-scale animate-delay-2">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-tools text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">Development Tools</h5>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="skill-badge">Git & GitHub</span>
+                                <span class="skill-badge">Composer</span>
+                                <span class="skill-badge">Artisan CLI</span>
+                                <span class="skill-badge">phpMyAdmin</span>
+                                <span class="skill-badge">Postman</span>
+                                <span class="skill-badge">VS Code</span>
+                                <span class="skill-badge">XAMPP</span>
+                                <span class="skill-badge">Supabase</span>
+                                <span class="skill-badge">Command Line</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-scale animate-delay-3">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-microchip text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">Hardware Expertise</h5>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="skill-badge">PC Assembly</span>
+                                <span class="skill-badge">Hardware Troubleshooting</span>
+                                <span class="skill-badge">Component Installation</span>
+                                <span class="skill-badge">System Diagnostics</span>
+                                <span class="skill-badge">Performance Optimization</span>
+                                <span class="skill-badge">Hardware Compatibility</span>
+                            </div>
+                            <p class="small text-muted mb-0">
+                                Extensive experience in computer assembly, disassembly, and hardware
+                                troubleshooting.
+                                This hands-on knowledge provides valuable insight into system performance and
+                                optimization.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-scale animate-delay-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-globe text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">Additional Technologies</h5>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="skill-badge">HTML5</span>
+                                <span class="skill-badge">CSS3</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <span class="skill-badge">Bootstrap</span>
+                                <span class="skill-badge">Tailwind CSS</span>
+                                <span class="skill-badge">JSON</span>
+                                <span class="skill-badge">AJAX</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-5" style="padding: 100px 0 !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-title animate-on-scroll">Featured Projects</h2>
+                    <p class="lead text-muted mb-5 animate-fade-in animate-delay-1"
+                        style="max-width: 600px; margin: 0 auto;">
+                        Showcasing backend development skills through practical, real-world applications
+                    </p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-slide-left animate-delay-1">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-dumbbell text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">Gym Management System</h5>
+                            </div>
+                            <p class="card-text text-muted mb-4">
+                                Comprehensive web platform for gym management featuring membership tracking, trainer
+                                scheduling,
+                                equipment monitoring, and financial analytics with interactive dashboards.
+                            </p>
+                            <div class="mb-4">
+                                <h6 class="small fw-semibold text-dark mb-2">Technologies Used:</h6>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="badge bg-primary">PHP</span>
+                                    <span class="badge bg-primary">HTML5</span>
+                                    <span class="badge bg-primary">Bootstrap</span>
+                                    <span class="badge bg-primary">JavaScript</span>
+                                    <span class="badge bg-primary">Chart.js</span>
+                                    <span class="badge bg-primary">MySQL</span>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://github.com/aliazercasan/FitnessBoss" target="_blank"
+                                    class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fab fa-github me-1"></i>View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-on-scroll animate-delay-2">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-camera text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">Multi-sided Marketplace</h5>
+                            </div>
+                            <p class="card-text text-muted mb-4">
+                                Advanced marketplace platform connecting studios, freelancers, and clients in the
+                                photography
+                                industry with booking management, project tracking, and integrated payment
+                                processing.
+                            </p>
+                            <div class="mb-4">
+                                <h6 class="small fw-semibold text-dark mb-2">Technologies Used:</h6>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="badge bg-primary">Laravel</span>
+                                    <span class="badge bg-primary">Blade</span>
+                                    <span class="badge bg-primary">MySQL</span>
+                                    <span class="badge bg-primary">Chart.js</span>
+                                    <span class="badge bg-primary">Tailwind CSS</span>
+                                    <span class="badge bg-primary">Alpine.js</span>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://github.com/aliazercasan/VisualCreative" target="_blank"
+                                    class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fab fa-github me-1"></i>View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-slide-right animate-delay-3">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-robot text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">AI Chatbot System</h5>
+                            </div>
+                            <p class="card-text text-muted mb-4">
+                                Intelligent conversational AI system built with Ollama integration, featuring
+                                real-time
+                                responses and modern UI design for seamless user interaction.
+                            </p>
+                            <div class="mb-4">
+                                <h6 class="small fw-semibold text-dark mb-2">Technologies Used:</h6>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="badge bg-primary">Laravel</span>
+                                    <span class="badge bg-primary">Ollama AI</span>
+                                    <span class="badge bg-primary">Tailwind CSS</span>
+                                    <span class="badge bg-primary">Alpine.js</span>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://github.com/aliazercasan/VisualCreative" target="_blank"
+                                    class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fab fa-github me-1"></i>View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4 mt-2">
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-slide-left animate-delay-4">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-bus text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">Bus Management System</h5>
+                            </div>
+                            <p class="card-text text-muted mb-4">
+                                Comprehensive transportation management platform handling bus scheduling, route
+                                optimization,
+                                passenger bookings, driver management, and automated payment processing for
+                                transport companies.
+                            </p>
+                            <div class="mb-4">
+                                <h6 class="small fw-semibold text-dark mb-2">Technologies Used:</h6>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="badge bg-primary">PHP</span>
+                                    <span class="badge bg-primary">HTML5</span>
+                                    <span class="badge bg-primary">Tailwind CSS</span>
+                                    <span class="badge bg-primary">MySQL</span>
+                                    <span class="badge bg-primary">JavaScript</span>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://github.com/aliazercasan/2nd-year-Project-Bus-Management"
+                                    target="_blank" class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fab fa-github me-1"></i>View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="card h-100 border-0 shadow-lg animate-slide-right animate-delay-5">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center me-3"
+                                    style="width: 50px; height: 50px;">
+                                    <i class="fas fa-shopping-cart text-white fa-lg"></i>
+                                </div>
+                                <h5 class="card-title mb-0 fw-bold">E-Commerce Platform</h5>
+                            </div>
+                            <p class="card-text text-muted mb-4">
+                                Full-featured e-commerce solution with product catalog management, shopping cart
+                                functionality,
+                                order processing, and secure payment integration. Built during academic studies to
+                                demonstrate
+                                core web development principles.
+                            </p>
+                            <div class="mb-4">
+                                <h6 class="small fw-semibold text-dark mb-2">Technologies Used:</h6>
+                                <div class="d-flex flex-wrap gap-1">
+                                    <span class="badge bg-primary">PHP</span>
+                                    <span class="badge bg-primary">MySQL</span>
+                                    <span class="badge bg-primary">JavaScript</span>
+                                    <span class="badge bg-primary">Tailwind CSS</span>
+                                    <span class="badge bg-primary">HTML5</span>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <a href="https://github.com/aliazercasan/E-Commerce-Website-2nd-Year-Project"
+                                    target="_blank" class="btn btn-outline-primary btn-sm flex-fill">
+                                    <i class="fab fa-github me-1"></i>View Code
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-5 position-relative overflow-hidden"
+        style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); padding: 100px 0 !important;">
+        <!-- Background Pattern -->
+        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10">
+            <div class="d-flex flex-wrap justify-content-around align-items-center h-100">
+                <i class="fas fa-certificate text-white" style="font-size: 2rem;"></i>
+                <i class="fas fa-award text-white" style="font-size: 1.5rem;"></i>
+                <i class="fas fa-medal text-white" style="font-size: 2.5rem;"></i>
+                <i class="fas fa-trophy text-white" style="font-size: 1.8rem;"></i>
+                <i class="fas fa-star text-white" style="font-size: 2rem;"></i>
+                <i class="fas fa-gem text-white" style="font-size: 1.6rem;"></i>
+            </div>
+        </div>
+
+        <div class="container position-relative">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <div class="cert-header-badge mb-4">
+                        <span class="badge bg-white text-primary px-4 py-2 rounded-pill fw-bold shadow-sm">
+                            <i class="fas fa-graduation-cap me-2"></i>Professional Excellence
+                        </span>
+                    </div>
+                    <h2 class="display-4 fw-bold text-white mb-4 position-relative">
+                        Industry Certifications
+                        <div class="cert-title-underline mx-auto mt-3"></div>
+                    </h2>
+                    <p class="lead text-white-50 mb-0" style="max-width: 700px; margin: 0 auto; font-size: 1.2rem;">
+                        Validated expertise through rigorous professional certifications from industry leaders
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <!-- Certification Card 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="cert-card-modern position-relative cert-clickable" data-bs-toggle="modal"
+                        data-bs-target="#certificationModal" data-cert-index="0">
+                        <div class="cert-card-inner">
+                            <div class="cert-image-wrapper">
+                                <img src="assets/cert1.png" alt="Professional Certification 1" class="cert-image">
+                                <div class="cert-shine"></div>
+                            </div>
+                            <div class="cert-card-overlay">
+                                <div class="cert-badge-collection">
+                                    <span class="cert-badge primary">
+                                        <i class="fas fa-images me-1"></i>5 Certs
+                                    </span>
+                                    <span class="cert-badge verified">
+                                        <i class="fas fa-check-circle me-1"></i>Verified
+                                    </span>
+                                </div>
+                                <div class="cert-action-btn">
+                                    <i class="fas fa-expand-alt"></i>
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Certification Card 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="cert-card-modern position-relative cert-clickable" data-bs-toggle="modal"
+                        data-bs-target="#certificationModal" data-cert-index="1">
+                        <div class="cert-card-inner">
+                            <div class="cert-image-wrapper">
+                                <img src="assets/cert2.png" alt="Professional Certification 2" class="cert-image">
+                                <div class="cert-shine"></div>
+                            </div>
+                            <div class="cert-card-overlay">
+                                <div class="cert-badge-collection">
+                                    <span class="cert-badge primary">
+                                        <i class="fas fa-certificate me-1"></i>Premium
+                                    </span>
+                                    <span class="cert-badge verified">
+                                        <i class="fas fa-check-circle me-1"></i>Verified
+                                    </span>
+                                </div>
+                                <div class="cert-action-btn">
+                                    <i class="fas fa-expand-alt"></i>
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Certification Card 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="cert-card-modern position-relative cert-clickable" data-bs-toggle="modal"
+                        data-bs-target="#certificationModal" data-cert-index="2">
+                        <div class="cert-card-inner">
+                            <div class="cert-image-wrapper">
+                                <img src="assets/cert7.png" alt="Professional Certification 3" class="cert-image">
+                                <div class="cert-shine"></div>
+                            </div>
+                            <div class="cert-card-overlay">
+                                <div class="cert-badge-collection">
+                                    <span class="cert-badge primary">
+                                        <i class="fas fa-images me-1"></i>3 Certs
+                                    </span>
+                                    <span class="cert-badge verified">
+                                        <i class="fas fa-check-circle me-1"></i>Verified
+                                    </span>
+                                </div>
+                                <div class="cert-action-btn">
+                                    <i class="fas fa-expand-alt"></i>
+                                    <span>View Details</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cert-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certification Modal -->
+    <div class="modal fade" id="certificationModal" tabindex="-1" aria-labelledby="certificationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content border-0 rounded-4 overflow-hidden shadow-lg">
+                <div class="modal-header border-0 bg-gradient-primary text-white">
+                    <div class="d-flex align-items-center">
+                        <div class="cert-modal-icon me-3">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div>
+                            <h5 class="modal-title fw-bold mb-0" id="certificationModalLabel">Professional
+                                Certification
+                            </h5>
+                            <small class="opacity-75">Industry Verified Credential</small>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0 position-relative bg-dark">
+                    <div class="cert-modal-image-container">
+                        <img id="modalCertImage" src="" alt="Certification" class="cert-modal-image">
+                        <div class="cert-modal-overlay"></div>
+                    </div>
+
+                    <!-- Navigation Arrows -->
+                    <button class="cert-nav-btn-modern cert-prev-modern" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="cert-nav-btn-modern cert-next-modern" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+
+                    <!-- Image Counter -->
+                    <div class="cert-counter cert-counter-modern">
+                        <div class="cert-counter-bg">
+                            <span id="currentCert">1</span> / <span id="totalCerts">5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 bg-light">
+                    <div class="d-flex justify-content-between align-items-center w-100 flex-wrap">
+                        <div class="cert-modal-info mb-2 mb-md-0">
+                            <small class="text-muted">
+                                <i class="fas fa-calendar-alt me-1"></i>
+                                Issued: 2024
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CV Download Button -->
+    <a href="resume.html" target="_blank" class="cv-download-btn" title="Download CV">
+        <i class="fas fa-file-alt"></i>
+        <span>Curriculum Vitae</span>
+    </a>
+
+    <!-- Dark Mode Toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+        <i class="fas fa-moon" id="themeIcon"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Get In Touch</h5>
+                    <p class="mb-3">Ready to discuss backend development opportunities and bring your projects to
+                        life.</p>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="mailto:solaimanaliazermain@gmail.com"
+                            class="text-white text-decoration-none d-flex align-items-center">
+                            <i class="fas fa-envelope fa-lg me-3"></i>
+                            <span>solaimanaliazermain@gmail.com</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aliazer-solaiman-b61145384/" target="_blank"
+                            class="text-white text-decoration-none d-flex align-items-center">
+                            <i class="fab fa-linkedin fa-lg me-3"></i>
+                            <span>linkedin.com/in/aliazer-solaiman</span>
+                        </a>
+                        <a href="https://github.com/aliazercasan" target="_blank"
+                            class="text-white text-decoration-none d-flex align-items-center">
+                            <i class="fab fa-github fa-lg me-3"></i>
+                            <span>github.com/aliazercasan</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <h5>Quick Links</h5>
+                    <div class="d-flex flex-column">
+                        <a href="#about" class="text-white text-decoration-none mb-1">About Me</a>
+                        <a href="#skills" class="text-white text-decoration-none mb-1">Technical Skills</a>
+                        <a href="#projects" class="text-white text-decoration-none mb-1">Projects</a>
+                        <a href="#certifications" class="text-white text-decoration-none">Certifications</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2024 Backend Developer Portfolio. Built with Laravel & MySQL.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animate-visible')) {
+                    entry.target.classList.add('animate-visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with animation classes
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(() => {
+                const animatedElements = document.querySelectorAll('.animate-on-scroll, .animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-scale, .animate-bounce-in');
+                animatedElements.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    if (rect.top < window.innerHeight * 0.8) {
+                        el.classList.add('animate-visible');
+                    } else {
+                        observer.observe(el);
+                    }
+                });
+            }, 100);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Subtle parallax effect for hero background
+        window.addEventListener('scroll', function () {
+            const scrolled = window.pageYOffset;
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection && scrolled < window.innerHeight) {
+                heroSection.style.backgroundPosition = `center ${scrolled * 0.2}px`;
+            }
+        });
+
+        // Certification Modal Handler
+        document.addEventListener('DOMContentLoaded', function () {
+            const certificationGroups = {
+                0: {
+                    title: 'Professional Development Certifications',
+                    images: [
+                        'cert1.png',
+                        'cert2.png',
+                        'cert3.png',
+                        'cert4.png',
+                        'cert5.png'
+                    ]
+                },
+                1: {
+                    title: 'Technical Certification',
+                    images: ['cert6.png']
+                },
+                2: {
+                    title: 'Advanced Certifications',
+                    images: [
+                        'cert7.png',
+                        'cert8.png',
+                        'cert9.png'
+                    ]
+                }
+            };
+
+            let currentGroup = 0;
+            let currentImageIndex = 0;
+
+            const modal = document.getElementById('certificationModal');
+            const modalImage = document.getElementById('modalCertImage');
+            const modalTitle = document.getElementById('certificationModalLabel');
+            const currentCertSpan = document.getElementById('currentCert');
+            const totalCertsSpan = document.getElementById('totalCerts');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            if (!modal) return;
+
+            function updateModal() {
+                const group = certificationGroups[currentGroup];
+                const images = group.images;
+
+                modalImage.src = 'assets/' + images[currentImageIndex];
+                modalTitle.textContent = group.title;
+                currentCertSpan.textContent = currentImageIndex + 1;
+                totalCertsSpan.textContent = images.length;
+
+                if (images.length <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = 'block';
+                    nextBtn.style.display = 'block';
+                }
+
+                const counter = document.querySelector('.cert-counter');
+                if (counter) {
+                    counter.style.display = images.length <= 1 ? 'none' : 'block';
+                }
+            }
+
+            function previousImage() {
+                const images = certificationGroups[currentGroup].images;
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                updateModal();
+            }
+
+            function nextImage() {
+                const images = certificationGroups[currentGroup].images;
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                updateModal();
+            }
+
+            document.querySelectorAll('.cert-clickable').forEach(card => {
+                card.addEventListener('click', function () {
+                    currentGroup = parseInt(this.getAttribute('data-cert-index'));
+                    currentImageIndex = 0;
+                    updateModal();
+                });
+            });
+
+            if (prevBtn) prevBtn.addEventListener('click', previousImage);
+            if (nextBtn) nextBtn.addEventListener('click', nextImage);
+
+            document.addEventListener('keydown', function (e) {
+                if (modal.classList.contains('show')) {
+                    if (e.key === 'ArrowLeft') {
+                        previousImage();
+                    } else if (e.key === 'ArrowRight') {
+                        nextImage();
+                    }
+                }
+            });
+
+            modal.addEventListener('hidden.bs.modal', function () {
+                currentImageIndex = 0;
+            });
+        });
+
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeToggle.addEventListener('click', function () {
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+
+</html>
