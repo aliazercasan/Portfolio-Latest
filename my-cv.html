@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Aliazer Casan – Back-End Developer</title>
+
+    <style>
+        /* ===== PAGE SETUP ===== */
+        @page {
+            size: 210mm 297mm;
+            margin: 15mm;
+        }
+
+        @media print {
+            body {
+                background: #ffffff;
+                margin: 0;
+            }
+        }
+
+        /* ===== BASE STYLES ===== */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #000;
+            line-height: 1.38;
+            /* tighter for A4 */
+            font-size: 11pt;
+        }
+
+        .page {
+            max-width: 180mm;
+            margin: auto;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-size: 24pt;
+            font-weight: bold;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        header h2 {
+            font-size: 12pt;
+            font-weight: normal;
+            margin: 2px 0 6px;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            font-size: 10pt;
+        }
+
+        .contact span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        svg {
+            width: 11px;
+            height: 11px;
+            fill: #000;
+        }
+
+        /* ===== SECTIONS ===== */
+        section {
+            margin-bottom: 10px;
+        }
+
+        section h3 {
+            font-size: 14pt;
+            font-weight: bold;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            border-bottom: 1.5pt solid #000;
+            margin-bottom: 6px;
+        }
+
+        /* ===== SUMMARY ===== */
+        .summary {
+            text-align: justify;
+            margin: 0;
+        }
+
+        /* ===== FLEX ROW ===== */
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 8px;
+            margin-bottom: 2px;
+        }
+
+        .row strong {
+            font-weight: bold;
+        }
+
+        .date {
+            font-style: italic;
+            white-space: nowrap;
+            font-size: 10.5pt;
+        }
+
+        /* ===== LISTS ===== */
+        ul {
+            margin: 4px 0 6px 16px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 2px;
+        }
+
+        /* ===== SKILLS ===== */
+        .skills p {
+            margin: 2px 0;
+        }
+
+        .skills strong {
+            font-weight: bold;
+        }
+
+        /* ===== EDUCATION ===== */
+        .education p {
+            margin: 0 0 4px;
+        }
+
+        .school {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- HEADER -->
+        <header>
+            <h1>Aliazer Casan P. Solaiman</h1>
+
+            <div class="contact">
+                <span>📍 Aplaya, Digos City, Davao del Sur</span>
+                <span>✉️ solaimanaliazermain@gmail.com</span>
+                <span>📞 0951 818 4296</span>
+            </div>
+        </header>
+
+        <!-- SUMMARY -->
+        <section>
+            <h3>Professional Summary</h3>
+            <div class="divider"></div>
+            <p class="summary">
+                Entry-level Back-End Developer with a strong foundation in software
+                development, database management, and web application logic. Skilled
+                in PHP, Laravel, and MySQL, with hands-on experience building backend
+                functionalities, implementing authentication systems, and optimizing
+                database performance. Background in computer assembly and
+                troubleshooting enhances system-level problem-solving and analysis.
+            </p>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="skills">
+            <h3>Technical Skills</h3>
+            <div class="divider"></div>
+            <p><strong>Languages & Frameworks:</strong> PHP, Laravel</p>
+            <p><strong>Databases:</strong> MySQL, PostgreSQL</p>
+            <p>
+                <strong>Backend:</strong> REST APIs, Authentication & Authorization
+            </p>
+            <p><strong>Tools:</strong> Git, GitHub</p>
+            <p>
+                <strong>Other:</strong> Debugging, Performance Optimization, Hardware
+                Fundamentals
+            </p>
+        </section>
+
+        <!-- PROJECTS -->
+        <section>
+            <h3>Projects</h3>
+            <div class="divider"></div>
+            <strong>Gym Management System</strong>
+            <ul>
+                <li>
+                    Developed a web-based gym management platform using PHP and Laravel to streamline daily gym
+                    operations.
+                </li>
+                <li>
+                    Implemented membership management, sales tracking, and transaction monitoring features.
+                </li>
+                <li>
+                    Integrated Chart.js to visualize sales data through interactive charts and dashboards.
+                </li>
+                <li>
+                    Designed backend logic to generate real-time sales reports to support business decision-making.
+                </li>
+                <li>
+                    Utilized PostgreSQL as the primary database for managing user data, memberships, and sales records
+                    with efficient querying and data integrity.
+                </li>
+            </ul>
+
+
+
+            <strong>Bus Management System</strong>
+            <ul>
+                <li>Bus scheduling, route optimization, and passenger booking.</li>
+                <li>Driver management and automated payment processing.</li>
+            </ul>
+
+            <strong>Zeraynce</strong>
+            <ul>
+                <li>Marketplace platform connecting studios, freelancers, and clients in the photography industry.</li>
+                <li>Booking management, project tracking, and integrated payment processing.</li>
+            </ul>
+        </section>
+
+
+        <!-- EDUCATION -->
+        <section class="education">
+            <h3>Education</h3>
+            <div class="divider"></div>
+
+            <div class="row">
+                <span class="school">University of Mindanao</span>
+                <span class="date">2022 – 2026</span>
+            </div>
+            <p>College Graduate</p>
+
+            <div class="row">
+                <span class="school">University of Mindanao</span>
+                <span class="date">2019 – 2021</span>
+            </div>
+            <p>Senior High School Graduate</p>
+
+        </section>
+    </div>
+</body>
+
+</html>

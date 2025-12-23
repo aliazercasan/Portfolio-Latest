@@ -258,3 +258,36 @@ hr {
         padding: 15px;
     }
 }
+
+/* Skills List Styling */
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skills-list li {
+    background: white;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+    color: #2c3e50;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.skills-list li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    border-left-color: #764ba2;
+}
+
+.skills-list li i {
+    color: #667eea;
+    margin-right: 12px;
+    font-size: 18px;
+    width: 20px;
+    text-align: center;
+}
