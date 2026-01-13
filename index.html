@@ -6,33 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Software Engineer Portfolio - Aliazer Casan Solaiman</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary-color: #0f172a;
-            --secondary-color: #1e293b;
             --accent-color: #6366f1;
             --accent-light: #818cf8;
-            --success-color: #10b981;
             --text-dark: #1e293b;
-            --text-light: #64748b;
             --text-muted: #94a3b8;
             --bg-light: #f8fafc;
             --bg-white: #ffffff;
             --border-color: #e2e8f0;
-            --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
         body { font-family: 'Inter', sans-serif; color: var(--text-dark); background-color: var(--bg-white); scroll-behavior: smooth; }
-        .navbar { background: rgba(15, 23, 42, 0.95) !important; backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .navbar { background: rgba(15, 23, 42, 0.95) !important; backdrop-filter: blur(10px); }
         
-        /* Hero Section - Text Focused */
+        /* Hero */
         .hero-section { 
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
-            color: white; 
-            padding: 180px 0 140px; 
+            color: white; padding: 180px 0 140px; 
             clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%); 
         }
 
@@ -41,34 +37,52 @@
         .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--accent-color); }
         .tech-stack-tag { font-size: 0.75rem; background: #eff6ff; color: #1e40af; padding: 4px 10px; border-radius: 6px; font-weight: 600; margin-right: 5px; margin-bottom: 5px; display: inline-block; }
         
-        /* Typography */
-        .section-title { font-weight: 800; position: relative; margin-bottom: 3.5rem; letter-spacing: -0.02em; }
-        .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 40px; height: 4px; background: var(--accent-color); border-radius: 2px; }
+        .section-title { font-weight: 800; position: relative; margin-bottom: 3.5rem; }
+        .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 40px; height: 4px; background: var(--accent-color); }
+
+        /* Floating CV Button - Fixed Icon Visibility */
+        .cv-float-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            z-index: 1000;
+            background: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cv-float-btn:hover { background: #059669; color: white; transform: translateY(-3px); }
 
         /* Dark Mode */
         body.dark-mode { background-color: #0f172a; color: #f1f5f9; }
         body.dark-mode .card { background-color: #1e293b; border-color: #334155; color: #f1f5f9; }
         body.dark-mode .bg-light { background-color: #1e293b !important; }
         body.dark-mode .text-muted { color: #94a3b8 !important; }
-        body.dark-mode .tech-stack-tag { background: rgba(99, 102, 241, 0.1); color: var(--accent-light); }
 
-        .theme-toggle { position: fixed; bottom: 30px; right: 30px; z-index: 1000; width: 55px; height: 55px; border-radius: 50%; background: var(--accent-color); color: white; border: none; box-shadow: var(--shadow-lg); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-        .theme-toggle:hover { transform: scale(1.1); background: var(--accent-light); }
+        .theme-toggle { position: fixed; bottom: 30px; right: 30px; z-index: 1000; width: 55px; height: 55px; border-radius: 50%; background: var(--accent-color); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     </style>
 </head>
 
 <body>
+    <a href="my-cv.html" target="_blank" class="cv-float-btn">
+        <i class="fas fa-file-pdf"></i> <span>Download CV</span>
+    </a>
+
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-code me-2 text-accent-light"></i>Aliazer.dev</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-terminal me-2"></i>Aliazer.dev</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#projects">Engineering</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
                     <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                    <li class="nav-item ms-lg-3"><a class="btn btn-primary px-4 text-white rounded-pill" href="mailto:solaimanaliazermain@gmail.com">Get In Touch</a></li>
+                    <li class="nav-item ms-lg-3"><a class="btn btn-primary px-4 text-white rounded-pill" href="mailto:solaimanaliazermain@gmail.com">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -76,14 +90,12 @@
 
     <section class="hero-section text-center">
         <div class="container">
-            <span class="badge rounded-pill bg-primary mb-3 px-3 py-2" style="background-color: rgba(99, 102, 241, 0.3) !important;">Software Engineer</span>
             <h1 class="display-3 fw-800 mb-3">Aliazer Casan Solaiman</h1>
-            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 750px; line-height: 1.6;">
-                Specializing in building <strong>robust web ecosystems</strong> and real-time architectures. 
-                Bridging the gap between complex backend logic and seamless user experiences.
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 750px;">
+                Software Engineer specializing in <strong>Laravel Ecosystems</strong>, Real-time WebSockets, and AI Integration.
             </p>
             <div class="d-flex justify-content-center gap-3">
-                <a href="#projects" class="btn btn-light btn-lg px-4 rounded-pill fw-600">Explore Work</a>
+                <a href="#projects" class="btn btn-light btn-lg px-4 rounded-pill fw-600">View Engineering Work</a>
                 <a href="https://github.com/aliazercasan" target="_blank" class="btn btn-outline-light btn-lg px-4 rounded-pill"><i class="fab fa-github me-2"></i>GitHub</a>
             </div>
         </div>
@@ -96,21 +108,16 @@
                 
                 <div class="col-lg-6">
                     <div class="card p-4">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="fw-bold m-0">Zeraynce Marketplace</h4>
-                            <i class="fas fa-project-diagram text-primary"></i>
-                        </div>
-                        <p class="text-muted small">Multi-sided marketplace connecting studios and freelancers.</p>
+                        <h4 class="fw-bold mb-3"><i class="fas fa-rocket me-2 text-primary"></i>Zeraynce</h4>
                         <ul class="small text-muted ps-3">
-                            <li>Real-time chat & notifications via <strong>WebSockets</strong>.</li>
-                            <li>Identity security via <strong>DIDIT KYC integration</strong>.</li>
-                            <li>Distributed asset management using <strong>Cloudflare R2</strong>.</li>
-                            <li>Financial layer integration with <strong>PayMongo</strong>.</li>
+                            <li>Real-time chat via <strong>WebSockets</strong>.</li>
+                            <li>KYC security via <strong>DIDIT integration</strong>.</li>
+                            <li>Storage via <strong>Cloudflare R2</strong>.</li>
+                            <li>Payments via <strong>PayMongo</strong>.</li>
                         </ul>
                         <div class="mt-3">
                             <span class="tech-stack-tag">Laravel</span>
                             <span class="tech-stack-tag">PostgreSQL</span>
-                            <span class="tech-stack-tag">R2 Storage</span>
                             <span class="tech-stack-tag">WebSockets</span>
                         </div>
                     </div>
@@ -118,61 +125,46 @@
 
                 <div class="col-lg-6">
                     <div class="card p-4">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="fw-bold m-0">Gym Management System</h4>
-                            <i class="fas fa-chart-line text-primary"></i>
-                        </div>
-                        <p class="text-muted small">ERP system for membership and financial tracking.</p>
+                        <h4 class="fw-bold mb-3"><i class="fas fa-dumbbell me-2 text-primary"></i>Gym System</h4>
                         <ul class="small text-muted ps-3">
-                            <li>Interactive sales data visualization via <strong>Chart.js</strong>.</li>
-                            <li>Member transaction monitoring & automated reporting.</li>
-                            <li>Relational data architecture designed for high consistency.</li>
+                            <li>Sales visualization via <strong>Chart.js</strong>.</li>
+                            <li>Transaction monitoring & reporting logic.</li>
+                            <li>Membership architecture on <strong>PostgreSQL</strong>.</li>
                         </ul>
                         <div class="mt-3">
                             <span class="tech-stack-tag">PHP</span>
-                            <span class="tech-stack-tag">Laravel</span>
+                            <span class="tech-stack-tag">Laravel Blade</span>
                             <span class="tech-stack-tag">Chart.js</span>
-                            <span class="tech-stack-tag">MySQL</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="card p-4">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="fw-bold m-0">Groq AI Chatbot</h4>
-                            <i class="fas fa-brain text-primary"></i>
-                        </div>
-                        <p class="text-muted small">Low-latency AI support interface.</p>
+                        <h4 class="fw-bold mb-3"><i class="fas fa-robot me-2 text-primary"></i>Groq AI Bot</h4>
                         <ul class="small text-muted ps-3">
-                            <li>Implemented <strong>Groq API</strong> for lightning-fast inference.</li>
-                            <li>Responsive UI built with <strong>Tailwind CSS</strong> & Blade.</li>
-                            <li>Engineered backend handling for async AI model requests.</li>
+                            <li>Lightning-fast AI via <strong>Groq API</strong>.</li>
+                            <li>Styled with <strong>Tailwind CSS</strong>.</li>
+                            <li>Async backend API handling.</li>
                         </ul>
                         <div class="mt-3">
                             <span class="tech-stack-tag">Groq API</span>
                             <span class="tech-stack-tag">Tailwind</span>
-                            <span class="tech-stack-tag">Laravel</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
                     <div class="card p-4">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="fw-bold m-0">Bus Operations System</h4>
-                            <i class="fas fa-route text-primary"></i>
-                        </div>
-                        <p class="text-muted small">Logistics system for transport scheduling.</p>
+                        <h4 class="fw-bold mb-3"><i class="fas fa-bus me-2 text-primary"></i>Bus Ops System</h4>
                         <ul class="small text-muted ps-3">
-                            <li>Optimized route planning and driver assignment modules.</li>
-                            <li>Automated trip passenger count & reporting logic.</li>
-                            <li>Consistent trip data storage for operational audit reliability.</li>
+                            <li>Operational route planning logic.</li>
+                            <li>Automated passenger trip calculations.</li>
+                            <li>Reliable trip data recording.</li>
                         </ul>
                         <div class="mt-3">
                             <span class="tech-stack-tag">MySQL</span>
-                            <span class="tech-stack-tag">PHP</span>
-                            <span class="tech-stack-tag">Business Logic</span>
+                            <span class="tech-stack-tag">PHP Logic</span>
                         </div>
                     </div>
                 </div>
@@ -198,19 +190,7 @@
         </div>
     </section>
 
-    <footer class="bg-dark text-white py-5">
-        <div class="container text-center">
-            <h5 class="fw-bold mb-4">Let's build the future of the web.</h5>
-            <div class="d-flex justify-content-center gap-4 mb-4">
-                <a href="mailto:solaimanaliazermain@gmail.com" class="text-white fs-4"><i class="fas fa-envelope"></i></a>
-                <a href="https://linkedin.com/in/aliazer-solaiman" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/aliazercasan" class="text-white fs-4"><i class="fab fa-github"></i></a>
-            </div>
-            <p class="small opacity-50 m-0">&copy; 2024 Aliazer Solaiman | Code-Driven Design</p>
-        </div>
-    </footer>
-
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+    <button class="theme-toggle" id="themeToggle">
         <i class="fas fa-moon"></i>
     </button>
 
