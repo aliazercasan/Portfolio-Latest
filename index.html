@@ -22,123 +22,43 @@
             --bg-white: #ffffff;
             --border-color: #e2e8f0;
             --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-white);
-            scroll-behavior: smooth;
-        }
-
-        /* Navigation */
-        .navbar {
-            background: rgba(15, 23, 42, 0.95) !important;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover { color: var(--accent-light) !important; }
-
+        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background-color: var(--bg-white); scroll-behavior: smooth; }
+        .navbar { background: rgba(15, 23, 42, 0.95) !important; backdrop-filter: blur(10px); }
+        
         /* Hero Section */
-        .hero-section {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 160px 0 120px;
-            position: relative;
-        }
+        .hero-section { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: white; padding: 160px 0 120px; clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
 
-        .hero-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100px;
-            background: linear-gradient(to bottom right, transparent 49.5%, var(--bg-white) 50%);
-        }
-
-        .section-title {
-            font-weight: 800;
-            position: relative;
-            display: inline-block;
-            margin-bottom: 3rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 50px;
-            height: 4px;
-            background: var(--accent-color);
-        }
-
-        /* Cards & Components */
-        .card {
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .skill-badge {
-            background: #f1f5f9;
-            color: var(--text-dark);
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid var(--border-color);
-        }
+        /* Project Cards */
+        .card { border: 1px solid var(--border-color); border-radius: 16px; transition: all 0.3s ease; height: 100%; }
+        .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); border-color: var(--accent-color); }
+        .tech-stack-tag { font-size: 0.75rem; background: #eff6ff; color: #1e40af; padding: 4px 10px; border-radius: 6px; font-weight: 600; margin-right: 5px; margin-bottom: 5px; display: inline-block; }
+        
+        /* Section Title */
+        .section-title { font-weight: 800; position: relative; margin-bottom: 3rem; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 5px; background: var(--accent-color); border-radius: 2px; }
 
         /* Dark Mode */
         body.dark-mode { background-color: #0f172a; color: #f1f5f9; }
         body.dark-mode .card { background-color: #1e293b; border-color: #334155; color: #f1f5f9; }
-        body.dark-mode .text-muted { color: #94a3b8 !important; }
         body.dark-mode .bg-light { background-color: #1e293b !important; }
+        body.dark-mode .text-muted { color: #94a3b8 !important; }
 
-        .theme-toggle {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow-lg);
-        }
-
-        /* Animations */
-        .animate-up { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
-        .visible { opacity: 1; transform: translateY(0); }
+        .theme-toggle { position: fixed; bottom: 30px; right: 30px; z-index: 1000; width: 55px; height: 55px; border-radius: 50%; background: var(--accent-color); color: white; border: none; box-shadow: var(--shadow-lg); cursor: pointer; }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-terminal me-2 text-accent"></i>Aliazer.dev</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-terminal me-2"></i>Aliazer.dev</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#skills">Stack</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Engineering</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-primary ms-lg-3 px-4 text-white" href="#contact">Hire Me</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-primary ms-lg-3 text-white" href="mailto:solaimanaliazermain@gmail.com">Hire Me</a></li>
                 </ul>
             </div>
         </div>
@@ -146,204 +66,140 @@
 
     <section class="hero-section text-center">
         <div class="container">
-            <span class="badge bg-success mb-3 px-3 py-2">Available for Strategic Roles</span>
-            <h1 class="display-2 fw-800 mb-3">Aliazer Casan Solaiman</h1>
-            <h2 class="h3 text-light opacity-75 mb-4">Full-Stack Engineer & System Architect</h2>
-            <p class="lead mx-auto mb-5" style="max-width: 700px;">
-                I bridge the gap between high-level software abstraction and low-level system performance. 
-                Specializing in building <strong>scalable web ecosystems</strong> with a focus on clean-code architecture.
+            <h1 class="display-3 fw-800 mb-3">Aliazer Casan Solaiman</h1>
+            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 700px;">
+                BSIT Engineer specializing in high-performance web systems, real-time architectures, and AI integration.
             </p>
             <div class="d-flex justify-content-center gap-3">
                 <a href="#projects" class="btn btn-light btn-lg px-4">View Systems</a>
-                <a href="https://github.com/aliazercasan" class="btn btn-outline-light btn-lg px-4"><i class="fab fa-github me-2"></i>Source Code</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-5">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h2 class="section-title">Engineering from the Metal Up</h2>
-                    <p class="text-muted fs-5">
-                        My background in hardware diagnostics and computer assembly gives me a unique perspective on software efficiency. I don't just write scripts; I understand how code interacts with memory and processor architecture to ensure <strong>maximum resource optimization.</strong>
-                    </p>
-                    <p class="text-muted">
-                        Whether it's architecting <strong>RESTful APIs</strong> in Laravel or managing complex data relations in <strong>PostgreSQL</strong>, my focus is always on the three pillars of modern engineering: Scalability, Security, and Maintainability.
-                    </p>
-                </div>
-                <div class="col-lg-6">
-                    <div class="p-4 bg-light rounded-4 border">
-                        <div class="row g-3">
-                            <div class="col-6">
-                                <div class="bg-white p-3 rounded-3 shadow-sm">
-                                    <i class="fas fa-layer-group text-primary mb-2"></i>
-                                    <h6>Scalability</h6>
-                                    <small class="text-muted">Designed for growth</small>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="bg-white p-3 rounded-3 shadow-sm">
-                                    <i class="fas fa-shield-alt text-success mb-2"></i>
-                                    <h6>Security</h6>
-                                    <small class="text-muted">OWASP focused</small>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="bg-white p-3 rounded-3 shadow-sm">
-                                    <i class="fas fa-bolt text-warning mb-2"></i>
-                                    <h6>Performance</h6>
-                                    <small class="text-muted">Latency optimized</small>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="bg-white p-3 rounded-3 shadow-sm">
-                                    <i class="fas fa-code text-info mb-2"></i>
-                                    <h6>Clean Code</h6>
-                                    <small class="text-muted">SOLID principles</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-    <section id="skills" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="section-title">Technical Ecosystem</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 shadow-sm">
-                        <h5 class="fw-bold mb-3">Backend & Logic</h5>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="skill-badge">Laravel (PHP)</span>
-                            <span class="skill-badge">Node.js</span>
-                            <span class="skill-badge">RESTful APIs</span>
-                            <span class="skill-badge">Eloquent ORM</span>
-                            <span class="skill-badge">OOP</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 shadow-sm">
-                        <h5 class="fw-bold mb-3">Data Infrastructure</h5>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="skill-badge">MySQL</span>
-                            <span class="skill-badge">PostgreSQL</span>
-                            <span class="skill-badge">Redis</span>
-                            <span class="skill-badge">Supabase</span>
-                            <span class="skill-badge">Database Design</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 p-4 shadow-sm">
-                        <h5 class="fw-bold mb-3">DevOps & Tools</h5>
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="skill-badge">Git/GitHub</span>
-                            <span class="skill-badge">Linux CLI</span>
-                            <span class="skill-badge">Postman</span>
-                            <span class="skill-badge">Composer</span>
-                            <span class="skill-badge">Vite</span>
-                        </div>
-                    </div>
-                </div>
+                <a href="https://github.com/aliazercasan" target="_blank" class="btn btn-outline-light btn-lg px-4"><i class="fab fa-github me-2"></i>GitHub</a>
             </div>
         </div>
     </section>
 
     <section id="projects" class="py-5">
         <div class="container py-5">
-            <h2 class="section-title">Featured Engineering Projects</h2>
+            <h2 class="section-title">Engineering Portfolio</h2>
             <div class="row g-4">
-                <div class="col-lg-4">
-                    <div class="card h-100 overflow-hidden">
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                <i class="fas fa-dumbbell fa-2x text-primary"></i>
-                                <span class="badge bg-soft-primary text-primary">Live System</span>
-                            </div>
-                            <h5 class="fw-bold">FitnessBoss ERP</h5>
-                            <p class="text-muted small">A full-scale Gym Management Platform. Optimized membership retention through automated billing cycles and real-time interactive analytics using Chart.js.</p>
-                            <div class="mt-3">
-                                <span class="badge bg-dark">PHP</span>
-                                <span class="badge bg-dark">MySQL</span>
-                                <span class="badge bg-dark">AJAX</span>
-                            </div>
+                
+                <div class="col-lg-6">
+                    <div class="card p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h4 class="fw-bold">Zeraynce Marketplace</h4>
+                            <i class="fas fa-rocket text-accent"></i>
+                        </div>
+                        <p class="text-muted small">A sophisticated multi-sided marketplace ecosystem.</p>
+                        <ul class="small text-muted">
+                            <li>Implemented real-time updates & chat using <strong>WebSockets</strong>.</li>
+                            <li>Engineered secure identity management with <strong>DIDIT KYC integration</strong>.</li>
+                            <li>Optimized media delivery using <strong>Cloudflare R2</strong> for distributed storage.</li>
+                            <li>Integrated <strong>PayMongo</strong> for robust financial transactions.</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="tech-stack-tag">Laravel</span>
+                            <span class="tech-stack-tag">WebSockets</span>
+                            <span class="tech-stack-tag">Cloudflare R2</span>
+                            <span class="tech-stack-tag">PayMongo</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 overflow-hidden">
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                <i class="fas fa-camera-retro fa-2x text-primary"></i>
-                                <span class="badge bg-soft-primary text-primary">Marketplace Engine</span>
-                            </div>
-                            <h5 class="fw-bold">VisualCreative Hub</h5>
-                            <p class="text-muted small">Multi-sided marketplace for creative studios. Architected a unified booking API handling real-time availability and complex vendor scheduling logic.</p>
-                            <div class="mt-3">
-                                <span class="badge bg-dark">Laravel</span>
-                                <span class="badge bg-dark">Alpine.js</span>
-                                <span class="badge bg-dark">Tailwind</span>
-                            </div>
+
+                <div class="col-lg-6">
+                    <div class="card p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h4 class="fw-bold">Gym Management System</h4>
+                            <i class="fas fa-dumbbell text-accent"></i>
+                        </div>
+                        <p class="text-muted small">Enterprise-focused membership and analytics platform.</p>
+                        <ul class="small text-muted">
+                            <li>Visualized complex sales data using <strong>Chart.js</strong> interactive dashboards.</li>
+                            <li>Architected membership tracking and reporting logic on <strong>PostgreSQL</strong>.</li>
+                            <li>Engineered real-time transaction monitoring and automated report generation.</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="tech-stack-tag">PHP</span>
+                            <span class="tech-stack-tag">Laravel Blade</span>
+                            <span class="tech-stack-tag">PostgreSQL</span>
+                            <span class="tech-stack-tag">Chart.js</span>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card h-100 overflow-hidden">
-                        <div class="p-4">
-                            <div class="d-flex justify-content-between align-items-start mb-3">
-                                <i class="fas fa-robot fa-2x text-primary"></i>
-                                <span class="badge bg-soft-primary text-primary">AI Integration</span>
-                            </div>
-                            <h5 class="fw-bold">Neural Chat System</h5>
-                            <p class="text-muted small">Integrated LLMs via Ollama to provide privacy-focused conversational interfaces. Optimized prompt-response cycles for near-zero latency.</p>
-                            <div class="mt-3">
-                                <span class="badge bg-dark">Ollama</span>
-                                <span class="badge bg-dark">Laravel</span>
-                                <span class="badge bg-dark">Vite</span>
-                            </div>
+
+                <div class="col-lg-6">
+                    <div class="card p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h4 class="fw-bold">Groq AI Chat System</h4>
+                            <i class="fas fa-robot text-accent"></i>
                         </div>
+                        <p class="text-muted small">Real-time AI conversational interface.</p>
+                        <ul class="small text-muted">
+                            <li>Seamlessly integrated <strong>Groq API</strong> for low-latency AI responses.</li>
+                            <li>Styled with <strong>Tailwind CSS</strong> for a modern, mobile-first UX.</li>
+                            <li>Built asynchronous backend logic to manage streaming AI outputs.</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="tech-stack-tag">Groq API</span>
+                            <span class="tech-stack-tag">Tailwind CSS</span>
+                            <span class="tech-stack-tag">Laravel</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <h4 class="fw-bold">Bus Ops Management</h4>
+                            <i class="fas fa-bus text-accent"></i>
+                        </div>
+                        <p class="text-muted small">Logistics and operational planning system.</p>
+                        <ul class="small text-muted">
+                            <li>Managed complex route planning and driver assignment scheduling.</li>
+                            <li>Automated passenger boarding calculations per trip for operational audit.</li>
+                            <li>Designed data-reliable trip recording system for consistent transport services.</li>
+                        </ul>
+                        <div class="mt-auto">
+                            <span class="tech-stack-tag">MySQL</span>
+                            <span class="tech-stack-tag">Scheduling Logic</span>
+                            <span class="tech-stack-tag">Operational ERP</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="section-title">Academic Foundation</h2>
+            <div class="card p-4 border-0 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4 class="fw-bold mb-1">University of Mindanao - Digos College</h4>
+                        <p class="text-accent fw-600 mb-0">Bachelor of Science in Information Technology</p>
+                    </div>
+                    <div class="text-end">
+                        <span class="badge bg-primary px-3 py-2">2022 – 2026</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="bg-dark text-white py-5 mt-5">
+    <footer class="bg-dark text-white py-5">
         <div class="container text-center">
-            <h2 class="mb-4">Ready to build something robust?</h2>
-            <p class="mb-5 opacity-75">I am currently open to software engineering roles and technical collaborations.</p>
-            <div class="d-flex justify-content-center gap-4">
+            <p class="mb-4">Ready to discuss your next project?</p>
+            <div class="d-flex justify-content-center gap-4 mb-4">
                 <a href="mailto:solaimanaliazermain@gmail.com" class="text-white fs-4"><i class="fas fa-envelope"></i></a>
                 <a href="https://linkedin.com/in/aliazer-solaiman" class="text-white fs-4"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/aliazercasan" class="text-white fs-4"><i class="fab fa-github"></i></a>
             </div>
-            <hr class="my-5 opacity-25">
-            <p class="small opacity-50">&copy; 2024 Aliazer Solaiman | Built with Laravel-standard Clean Code Practices</p>
+            <p class="small opacity-50">&copy; 2024 Aliazer Solaiman. Built with Laravel-standard conventions.</p>
         </div>
     </footer>
 
     <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
 
     <script>
-        // Intersection Observer for scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('section, .card').forEach(el => {
-            el.classList.add('animate-up');
-            observer.observe(el);
-        });
-
-        // Theme Toggle
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
