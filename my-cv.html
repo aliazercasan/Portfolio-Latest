@@ -1,252 +1,224 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
-    <title>Aliazer Casan – Back-End Developer</title>
+<meta charset="UTF-8">
+<title>Aliazer Casan – Software Developer</title>
 
-    <style>
-        /* ===== PAGE SETUP ===== */
-        @page {
-            size: 210mm 297mm;
-            margin: 15mm;
-        }
+<style>
+@page {
+  size: 210mm 297mm;
+  margin: 15mm;
+}
 
-        @media print {
-            body {
-                background: #ffffff;
-                margin: 0;
-            }
-        }
+@media print {
+  body { background: #fff; margin: 0; }
+}
 
-        /* ===== BASE STYLES ===== */
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            color: #000;
-            line-height: 1.38;
-            /* tighter for A4 */
-            font-size: 11pt;
-        }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+  line-height: 1.38;
+  color: #000;
+}
 
-        .page {
-            max-width: 180mm;
-            margin: auto;
-        }
+.page {
+  max-width: 180mm;
+  margin: auto;
+}
 
-        /* ===== HEADER ===== */
-        header {
-            text-align: center;
-            margin-bottom: 10px;
-        }
+/* HEADER */
+header {
+  text-align: center;
+  margin-bottom: 10px;
+}
 
-        header h1 {
-            font-size: 24pt;
-            font-weight: bold;
-            margin: 0;
-            text-transform: uppercase;
-        }
+header h1 {
+  font-size: 24pt;
+  margin: 0;
+  text-transform: uppercase;
+}
 
-        header h2 {
-            font-size: 12pt;
-            font-weight: normal;
-            margin: 2px 0 6px;
-        }
+header h2 {
+  font-size: 12pt;
+  font-weight: normal;
+  margin: 2px 0 6px;
+}
 
-        .contact {
-            display: flex;
-            justify-content: center;
-            gap: 14px;
-            flex-wrap: wrap;
-            font-size: 10pt;
-        }
+.contact {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 10pt;
+}
 
-        .contact span {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+/* SECTIONS */
+section { margin-bottom: 10px; }
 
-        svg {
-            width: 11px;
-            height: 11px;
-            fill: #000;
-        }
+section h3 {
+  font-size: 14pt;
+  font-weight: bold;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
 
-        /* ===== SECTIONS ===== */
-        section {
-            margin-bottom: 10px;
-        }
+.divider {
+  border-bottom: 1.5pt solid #000;
+  margin-bottom: 6px;
+}
 
-        section h3 {
-            font-size: 14pt;
-            font-weight: bold;
-            margin-bottom: 2px;
-            text-transform: uppercase;
-        }
+/* FLEX ROW */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
 
-        .divider {
-            border-bottom: 1.5pt solid #000;
-            margin-bottom: 6px;
-        }
+.date {
+  font-style: italic;
+  font-size: 10.5pt;
+}
 
-        /* ===== SUMMARY ===== */
-        .summary {
-            text-align: justify;
-            margin: 0;
-        }
+/* LISTS */
+ul {
+  margin: 4px 0 6px 16px;
+  padding: 0;
+}
 
-        /* ===== FLEX ROW ===== */
-        .row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 8px;
-            margin-bottom: 2px;
-        }
+li { margin-bottom: 2px; }
 
-        .row strong {
-            font-weight: bold;
-        }
-
-        .date {
-            font-style: italic;
-            white-space: nowrap;
-            font-size: 10.5pt;
-        }
-
-        /* ===== LISTS ===== */
-        ul {
-            margin: 4px 0 6px 16px;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 2px;
-        }
-
-        /* ===== SKILLS ===== */
-        .skills p {
-            margin: 2px 0;
-        }
-
-        .skills strong {
-            font-weight: bold;
-        }
-
-        /* ===== EDUCATION ===== */
-        .education p {
-            margin: 0 0 4px;
-        }
-
-        .school {
-            font-weight: bold;
-        }
-    </style>
+/* SKILLS */
+.skills p { margin: 2px 0; }
+.skills strong { font-weight: bold; }
+</style>
 </head>
 
 <body>
-    <div class="page">
-        <!-- HEADER -->
-        <header>
-            <h1>Aliazer Casan P. Solaiman</h1>
+<div class="page">
 
-            <div class="contact">
-                <span>📍 Aplaya, Digos City, Davao del Sur</span>
-                <span>✉️ solaimanaliazermain@gmail.com</span>
-                <span>📞 0951 818 4296</span>
-            </div>
-        </header>
+<header>
+  <h1>Aliazer Casan</h1>
+  <h2>Software Developer</h2>
+  <div class="contact">
+    <span>Digos City, Davao del Sur</span>
+    <span>iamaliazermain@gmail.com</span>
+    <span>0951 818 3296</span>
+  </div>
+</header>
 
-        <!-- SUMMARY -->
-        <section>
-            <h3>Professional Summary</h3>
-            <div class="divider"></div>
-            <p class="summary">
-                Entry-level Back-End Developer with a strong foundation in software
-                development, database management, and web application logic. Skilled
-                in PHP, Laravel, and MySQL, with hands-on experience building backend
-                functionalities, implementing authentication systems, and optimizing
-                database performance. Background in computer assembly and
-                troubleshooting enhances system-level problem-solving and analysis.
-            </p>
-        </section>
+<section>
+  <h3>Profile Summary</h3>
+  <div class="divider"></div>
+  <p style="text-align:justify; margin:0;">
+    Entry-level Software Developer with hands-on experience building web-based systems using PHP and Laravel.
+    Skilled in RESTful API development, authentication and authorization, database management using MySQL and PostgreSQL,
+    and real-time features implemented with WebSockets. Experienced in integrating payment gateways, KYC verification
+    services, AI-powered chatbots, and cloud-based storage solutions. Highly motivated and eager to grow in a
+    collaborative development environment.
+  </p>
+</section>
 
-        <!-- SKILLS -->
-        <section class="skills">
-            <h3>Technical Skills</h3>
-            <div class="divider"></div>
-            <p><strong>Languages & Frameworks:</strong> PHP, Laravel</p>
-            <p><strong>Databases:</strong> MySQL, PostgreSQL</p>
-            <p>
-                <strong>Backend:</strong> REST APIs, Authentication & Authorization
-            </p>
-            <p><strong>Tools:</strong> Git, GitHub</p>
-            <p>
-                <strong>Other:</strong> Debugging, Performance Optimization, Hardware
-                Fundamentals
-            </p>
-        </section>
+<section class="skills">
+  <h3>Technical Skills</h3>
+  <div class="divider"></div>
+  <p><strong>Languages & Frameworks:</strong> PHP, Laravel</p>
+  <p><strong>Frontend:</strong> Laravel Blade, Tailwind CSS</p>
+  <p><strong>Databases:</strong> MySQL, PostgreSQL</p>
+  <p><strong>Backend:</strong> REST APIs, Authentication & Authorization</p>
+  <p><strong>Real-Time:</strong> WebSockets</p>
+  <p><strong>AI Integration:</strong> Groq API (AI Chatbot)</p>
+  <p><strong>Integrations:</strong> PayMongo (Payments), DIDIT (KYC)</p>
+  <p><strong>Cloud Storage:</strong> Cloudflare R2</p>
+  <p><strong>Version Control:</strong> Git, GitHub</p>
+</section>
 
-        <!-- PROJECTS -->
-        <section>
-            <h3>Projects</h3>
-            <div class="divider"></div>
-            <strong>Gym Management System</strong>
-            <ul>
-                <li>
-                    Developed a web-based gym management platform using PHP and Laravel to streamline daily gym
-                    operations.
-                </li>
-                <li>
-                    Implemented membership management, sales tracking, and transaction monitoring features.
-                </li>
-                <li>
-                    Integrated Chart.js to visualize sales data through interactive charts and dashboards.
-                </li>
-                <li>
-                    Designed backend logic to generate real-time sales reports to support business decision-making.
-                </li>
-                <li>
-                    Utilized PostgreSQL as the primary database for managing user data, memberships, and sales records
-                    with efficient querying and data integrity.
-                </li>
-            </ul>
+<section>
+  <h3>Work Experience</h3>
+  <div class="divider"></div>
 
+  <div class="row">
+    <strong>Junior Software Developer (OJT / Internship) – Really Great Company</strong>
+    <span class="date">2025 – 2026</span>
+  </div>
 
+  <ul>
+    <li>Assisted in developing web application features using PHP and Laravel.</li>
+    <li>Built and maintained RESTful APIs for internal and external integrations.</li>
+    <li>Implemented authentication and session handling for secure user access.</li>
+    <li>Optimized SQL queries and backend logic to improve performance.</li>
+    <li>Collaborated with senior developers to debug issues and enhance system functionality.</li>
+  </ul>
+</section>
 
-            <strong>Bus Management System</strong>
-            <ul>
-                <li>Bus scheduling, route optimization, and passenger booking.</li>
-                <li>Driver management and automated payment processing.</li>
-            </ul>
+<section>
+  <h3>Projects</h3>
+  <div class="divider"></div>
 
-            <strong>Zeraynce</strong>
-            <ul>
-                <li>Marketplace platform connecting studios, freelancers, and clients in the photography industry.</li>
-                <li>Booking management, project tracking, and integrated payment processing.</li>
-            </ul>
-        </section>
+  <strong>Gym Management System</strong>
+  <ul>
+    <li>Developed a web-based gym management platform using PHP and Laravel with Blade templates.</li>
+    <li>Implemented membership management, sales tracking, and transaction monitoring features.</li>
+    <li>Integrated Chart.js to visualize sales analytics through interactive dashboards.</li>
+    <li>Designed backend logic to generate real-time sales reports.</li>
+    <li>Used PostgreSQL to manage memberships, sales records, and user data.</li>
+  </ul>
 
+  <strong>Zeraynce</strong>
+  <ul>
+    <li>Developed a marketplace platform connecting studios, freelancers, and clients.</li>
+    <li>Utilized Laravel Blade templates for structured and reusable frontend views.</li>
+    <li>Implemented real-time booking updates, chat messaging, and notifications using WebSockets.</li>
+    <li>Integrated DIDIT for KYC verification to ensure platform security.</li>
+    <li>Implemented portfolio management using Cloudflare R2 for photo and video storage.</li>
+    <li>Integrated PayMongo for secure online payment processing.</li>
+  </ul>
 
-        <!-- EDUCATION -->
-        <section class="education">
-            <h3>Education</h3>
-            <div class="divider"></div>
+  <strong>Groq AI Chat Bot</strong>
+  <ul>
+    <li>Developed an AI-powered chatbot by integrating the Groq API for real-time conversational support.</li>
+    <li>Built the user interface using Laravel Blade templates and styled with Tailwind CSS.</li>
+    <li>Implemented backend logic to handle API requests, user inputs, and chatbot responses.</li>
+  </ul>
 
-            <div class="row">
-                <span class="school">University of Mindanao</span>
-                <span class="date">2022 – 2026</span>
-            </div>
-            <p>College Graduate</p>
+  <strong>Bus Management System</strong>
+  <ul>
+    <li>Developed a web-based bus management system to support scheduling, route planning, and daily operations.</li>
+    <li>Implemented bus schedules, route assignments, and driver management features.</li>
+    <li>Implemented functionality to record and calculate the total number of passengers boarded per trip.</li>
+    <li>Designed backend logic to store trip data, passenger records, and operational reports.</li>
+    <li>Ensured data accuracy and system reliability for consistent transport service operations.</li>
+  </ul>
+</section>
 
-            <div class="row">
-                <span class="school">University of Mindanao</span>
-                <span class="date">2019 – 2021</span>
-            </div>
-            <p>Senior High School Graduate</p>
+<section>
+  <h3>Education</h3>
+  <div class="divider"></div>
 
-        </section>
-    </div>
+  <div class="row">
+    <strong>University of Mindanao</strong>
+    <span class="date">2022 – 2026</span>
+  </div>
+  <p>College Graduate</p>
+
+  <div class="row">
+    <strong>University of Mindanao</strong>
+    <span class="date">2019 – 2021</span>
+  </div>
+  <p>Senior High School Graduate</p>
+
+  <div class="row">
+    <strong>Digos City National High School</strong>
+    <span class="date">2016 – 2019</span>
+  </div>
+  <p>Junior High School Graduate</p>
+
+  <div class="row">
+    <strong>Don Mariano Marcos Elementary School</strong>
+    <span class="date">2010 – 2016</span>
+  </div>
+  <p>Elementary Graduate</p>
+</section>
+
+</div>
 </body>
-
 </html>
