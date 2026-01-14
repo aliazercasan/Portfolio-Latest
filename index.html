@@ -4,204 +4,841 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Software Engineer Portfolio - Aliazer Casan Solaiman</title>
+    <title>Software Developer Portfolio - Aliazer Casan Solaiman</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         :root {
-            --primary-color: #0f172a;
-            --accent-color: #6366f1;
-            --accent-light: #818cf8;
-            --text-dark: #1e293b;
-            --text-muted: #94a3b8;
-            --bg-light: #f8fafc;
-            --bg-white: #ffffff;
-            --border-color: #e2e8f0;
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            /* Modern Palette - Deep Space Theme */
+            --bg-body: #030712;
+            --bg-surface: #0f172a;
+            --bg-surface-hover: #1e293b;
+
+            /* Primary Accents - Modern Indigo/Violet Gradient */
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #a855f7;
+            --accent: #38bdf8;
+
+            /* Text Colors - Updated for better contrast */
+            --text-main: #ffffff;
+            --text-muted: #cbd5e1;
+            /* Slate-300 - Much lighter for readability */
+            --text-light: #e2e8f0;
+            /* Slate-200 */
+
+            /* Borders & Effects */
+            --border-color: rgba(148, 163, 184, 0.1);
+            --glass-bg: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+            --glow: 0 0 20px rgba(99, 102, 241, 0.15);
         }
 
-        body { font-family: 'Inter', sans-serif; color: var(--text-dark); background-color: var(--bg-white); scroll-behavior: smooth; }
-        .navbar { background: rgba(15, 23, 42, 0.95) !important; backdrop-filter: blur(10px); }
-        
-        /* Hero */
-        .hero-section { 
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); 
-            color: white; padding: 180px 0 140px; 
-            clip-path: polygon(0 0, 100% 0, 100% 92%, 0% 100%); 
+        /* Reset & Base */
+        * {
+            box-sizing: border-box;
         }
 
-        /* Project Cards */
-        .card { border: 1px solid var(--border-color); border-radius: 16px; transition: all 0.3s ease; height: 100%; background: #fff; }
-        .card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--accent-color); }
-        .tech-stack-tag { font-size: 0.75rem; background: #eff6ff; color: #1e40af; padding: 4px 10px; border-radius: 6px; font-weight: 600; margin-right: 5px; margin-bottom: 5px; display: inline-block; }
-        
-        .section-title { font-weight: 800; position: relative; margin-bottom: 3.5rem; }
-        .section-title::after { content: ''; position: absolute; bottom: -12px; left: 0; width: 40px; height: 4px; background: var(--accent-color); }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-        /* Floating CV Button - Fixed Icon Visibility */
-        .cv-float-btn {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            z-index: 1000;
-            background: #10b981;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            box-shadow: var(--shadow-lg);
-            transition: 0.3s;
+        /* Contrast Overrides */
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+
+        /* Utilities */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-padding {
+            padding: 120px 0;
+        }
+
+        .glass-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg), var(--glow);
+        }
+
+        /* Navbar Redesign */
+        .navbar {
+            background: rgba(3, 7, 18, 0.85) !important;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-size: 1.5rem;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        .cv-float-btn:hover { background: #059669; color: white; transform: translateY(-3px); }
 
-        /* Dark Mode */
-        body.dark-mode { background-color: #0f172a; color: #f1f5f9; }
-        body.dark-mode .card { background-color: #1e293b; border-color: #334155; color: #f1f5f9; }
-        body.dark-mode .bg-light { background-color: #1e293b !important; }
-        body.dark-mode .text-muted { color: #94a3b8 !important; }
+        .navbar-brand i {
+            color: var(--primary);
+            filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.5));
+        }
 
-        .theme-toggle { position: fixed; bottom: 30px; right: 30px; z-index: 1000; width: 55px; height: 55px; border-radius: 50%; background: var(--accent-color); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Hero Section Redesign */
+        .hero-section {
+            padding: 180px 0 120px;
+            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg-body) 60%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Geometric Background Elements */
+        .hero-bg-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: 0;
+            animation: float-glow 10s infinite ease-in-out;
+        }
+
+        @keyframes float-glow {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(30px, -30px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 50px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #fff 20%, var(--text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Buttons Premium */
+        .btn-modern {
+            padding: 12px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-primary-modern {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-primary-modern:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+            color: white;
+        }
+
+        .btn-outline-modern {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .btn-outline-modern:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Section Headings */
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-title-modern {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            position: relative;
+        }
+
+        /* About Cards */
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Modern Skill Badges */
+        .tech-stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 1rem;
+        }
+
+        .tech-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            gap: 10px;
+            aspect-ratio: 1;
+        }
+
+        .tech-item:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .tech-item i {
+            font-size: 2rem;
+            color: var(--text-light);
+            transition: 0.3s;
+        }
+
+        .tech-item:hover i {
+            color: var(--primary);
+        }
+
+        .tech-item span {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Project Cards Redesign */
+        .project-card {
+            height: 100%;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.03), transparent);
+        }
+
+        .project-icon {
+            width: 54px;
+            height: 54px;
+            background: linear-gradient(135deg, var(--bg-surface-hover), var(--bg-surface));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-icon i {
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        .project-body {
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            padding: 0 2rem 2rem;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 50px;
+            color: var(--text-light);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            transition: 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        /* Form */
+        .form-control {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 12px;
+        }
+
+        .form-control:focus {
+            background: var(--bg-surface);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+            color: white;
+        }
+
+        /* Responsive Fixes */
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: var(--bg-surface);
+                padding: 20px;
+                border-radius: 16px;
+                margin-top: 15px;
+                border: 1px solid var(--border-color);
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+        }
+
+        /* Remove Old Theme Toggle - We are Full Dark Mode Now */
+        .theme-toggle {
+            display: none !important;
+        }
+
+        .bg-light {
+            background: transparent !important;
+        }
     </style>
 </head>
 
 <body>
-    <a href="my-cv.html" target="_blank" class="cv-float-btn">
-        <i class="fas fa-file-pdf"></i> <span>Download CV</span>
-    </a>
-
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-terminal me-2"></i>Aliazer.dev</a>
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-code-branch"></i>
+                <span>Aliazer Casan</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
-                    <li class="nav-item ms-lg-3"><a class="btn btn-primary px-4 text-white rounded-pill" href="mailto:solaimanaliazermain@gmail.com">Contact</a></li>
+                <ul class="navbar-nav ms-auto gap-2">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Stack</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Work</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <section class="hero-section text-center">
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-center text-lg-start">
+        <div class="hero-bg-glow" style="top: -10%; left: -10%;"></div>
+        <div class="hero-bg-glow"
+            style="bottom: 10%; right: -10%; animation-delay: -5s; background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);">
+        </div>
+
+        <div class="container hero-content">
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="mb-4 animate-fade-in">
+                        <span class="hero-badge">
+                            <i class="fas fa-circle fa-xs me-2 text-success"></i> Available for Hire
+                        </span>
+                    </div>
+                    <h1 class="hero-title fw-bold mb-4 animate-scale animate-delay-1">
+                        Building the Next Generation <br>
+                        <span class="text-gradient">of Digital Experiences</span>
+                    </h1>
+                    <p class="lead mb-5 animate-fade-in animate-delay-2"
+                        style="color: var(--text-muted); font-size: 1.25rem; max-width: 700px; margin: 0 auto;">
+                        Software Developer specializing in full-stack architecture. I craft robust webs applications
+                        using Laravel, PHP, and modern frontend frameworks.
+                    </p>
+                    <div
+                        class="d-flex flex-column flex-sm-row gap-3 justify-content-center animate-scale animate-delay-3">
+                        <a href="#projects" class="btn-modern btn-primary-modern">
+                            View My Work <i class="fas fa-arrow-right ms-1"></i>
+                        </a>
+                        <a href="my-cv.html" target="_blank" class="btn-modern btn-outline-modern">
+                            My Resume <i class="fas fa-download ms-1"></i>
+                        </a>
+                    </div>
+
+                    <div
+                        class="mt-5 pt-4 d-flex justify-content-center gap-4 animate-fade-in animate-delay-4 text-muted">
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fab fa-php fa-lg"></i>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fab fa-laravel fa-lg"></i>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fab fa-js fa-lg"></i>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <i class="fas fa-database fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section-padding">
         <div class="container">
-            <h1 class="display-3 fw-800 mb-3">Aliazer Casan Solaiman</h1>
-            <p class="lead opacity-75 mb-5 mx-auto" style="max-width: 750px;">
-                Software Engineer specializing in <strong>Laravel Ecosystems</strong>, Real-time WebSockets, and AI Integration.
-            </p>
-            <div class="d-flex justify-content-center gap-3">
-                <a href="#projects" class="btn btn-light btn-lg px-4 rounded-pill fw-600">View Engineering Work</a>
-                <a href="https://github.com/aliazercasan" target="_blank" class="btn btn-outline-light btn-lg px-4 rounded-pill"><i class="fab fa-github me-2"></i>GitHub</a>
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title-modern">About Me</h2>
+                <div style="width: 60px; height: 4px; background: var(--primary); margin: 0 auto; border-radius: 2px;">
+                </div>
+            </div>
+
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 animate-slide-left">
+                    <h3 class="mb-4 text-white">Engineering <span class="text-gradient">Robust Solutions</span></h3>
+                    <p class="mb-4 text-muted" style="font-size: 1.1rem;">
+                        Hello! I'm <strong class="text-white">Aliazer Casan P. Solaiman</strong>. My journey started
+                        with hardware—assembling PCs and troubleshooting systems—which gave me a unique perspective on
+                        how software interacts with the machine.
+                    </p>
+                    <p class="mb-4 text-muted" style="font-size: 1.1rem;">
+                        Today, I leverage that deep technical understanding to build efficient, scalable web
+                        applications. I specialize in the <strong>TALL stack</strong> and <strong>PHP/Laravel</strong>
+                        ecosystems, focusing on clean architecture and database optimization.
+                    </p>
+
+                    <div class="row g-3 mt-2">
+                        <div class="col-6">
+                            <div class="glass-card p-3 d-flex align-items-center gap-3">
+                                <div class="bg-surface rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 45px; height: 45px; background: rgba(99,102,241,0.1); color: var(--primary);">
+                                    <i class="fas fa-layer-group"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 text-white">Full Stack</h6>
+                                    <small class="text-muted">End-to-End Dev</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="glass-card p-3 d-flex align-items-center gap-3">
+                                <div class="bg-surface rounded-circle d-flex align-items-center justify-content-center"
+                                    style="width: 45px; height: 45px; background: rgba(168,85,247,0.1); color: var(--secondary);">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 text-white">Backend</h6>
+                                    <small class="text-muted">High Performance</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 animate-slide-right">
+                    <div class="glass-card p-4 p-md-5 position-relative">
+                        <div class="position-absolute top-0 end-0 p-3 opacity-25">
+                            <i class="fas fa-quote-right fa-3x text-primary"></i>
+                        </div>
+                        <h4 class="mb-4">My Philosophy</h4>
+
+                        <div class="d-flex flex-column gap-4">
+                            <div class="d-flex gap-3">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <div>
+                                    <h6 class="text-white mb-1">Problem First</h6>
+                                    <p class="text-muted small mb-0">I focus on understanding the core problem before
+                                        writing a single line of code.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <div>
+                                    <h6 class="text-white mb-1">Clean Architecture</h6>
+                                    <p class="text-muted small mb-0">Writing maintainable, self-documenting code that
+                                        scales.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <i class="fas fa-check-circle text-success mt-1"></i>
+                                <div>
+                                    <h6 class="text-white mb-1">Hardware Aware</h6>
+                                    <p class="text-muted small mb-0">Optimizing performance by understanding underlying
+                                        system constraints.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-5">
-        <div class="container py-5">
-            <h2 class="section-title">Technical Projects</h2>
+    <!-- Skills Section -->
+    <section id="skills" class="section-padding"
+        style="background: linear-gradient(to bottom, var(--bg-body), #0f172a);">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title-modern">Technical Arsenal</h2>
+                <div
+                    style="width: 60px; height: 4px; background: var(--secondary); margin: 0 auto; border-radius: 2px;">
+                </div>
+                <p class="text-muted mt-3" style="max-width: 600px; margin-left: auto; margin-right: auto;">
+                    A comprehensive suite of technologies I use to build scalable solutions.
+                </p>
+            </div>
+
             <div class="row g-4">
-                
                 <div class="col-lg-6">
-                    <div class="card p-4">
-                        <h4 class="fw-bold mb-3"><i class="fas fa-rocket me-2 text-primary"></i>Zeraynce</h4>
-                        <ul class="small text-muted ps-3">
-                            <li>Real-time chat via <strong>WebSockets</strong>.</li>
-                            <li>KYC security via <strong>DIDIT integration</strong>.</li>
-                            <li>Storage via <strong>Cloudflare R2</strong>.</li>
-                            <li>Payments via <strong>PayMongo</strong>.</li>
-                        </ul>
-                        <div class="mt-3">
-                            <span class="tech-stack-tag">Laravel</span>
-                            <span class="tech-stack-tag">PostgreSQL</span>
-                            <span class="tech-stack-tag">WebSockets</span>
+                    <h4 class="mb-4 text-white"><i class="fas fa-code me-2 text-primary"></i>Core Stack</h4>
+                    <div class="tech-stack-grid">
+                        <div class="tech-item animate-scale animate-delay-1">
+                            <i class="fab fa-laravel"></i>
+                            <span>Laravel</span>
+                        </div>
+                        <div class="tech-item animate-scale animate-delay-2">
+                            <i class="fab fa-php"></i>
+                            <span>PHP</span>
+                        </div>
+                        <div class="tech-item animate-scale animate-delay-3">
+                            <i class="fas fa-database"></i>
+                            <span>MySQL</span>
+                        </div>
+                        <div class="tech-item animate-scale animate-delay-4">
+                            <i class="fas fa-server"></i>
+                            <span>Livewire</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="card p-4">
-                        <h4 class="fw-bold mb-3"><i class="fas fa-dumbbell me-2 text-primary"></i>Gym System</h4>
-                        <ul class="small text-muted ps-3">
-                            <li>Sales visualization via <strong>Chart.js</strong>.</li>
-                            <li>Transaction monitoring & reporting logic.</li>
-                            <li>Membership architecture on <strong>PostgreSQL</strong>.</li>
-                        </ul>
-                        <div class="mt-3">
-                            <span class="tech-stack-tag">PHP</span>
-                            <span class="tech-stack-tag">Laravel Blade</span>
-                            <span class="tech-stack-tag">Chart.js</span>
+                    <h4 class="mb-4 text-white"><i class="fas fa-layer-group me-2 text-secondary"></i>Frontend & Tools
+                    </h4>
+                    <div class="tech-stack-grid">
+                        <div class="tech-item animate-scale animate-delay-1">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="card p-4">
-                        <h4 class="fw-bold mb-3"><i class="fas fa-robot me-2 text-primary"></i>Groq AI Bot</h4>
-                        <ul class="small text-muted ps-3">
-                            <li>Lightning-fast AI via <strong>Groq API</strong>.</li>
-                            <li>Styled with <strong>Tailwind CSS</strong>.</li>
-                            <li>Async backend API handling.</li>
-                        </ul>
-                        <div class="mt-3">
-                            <span class="tech-stack-tag">Groq API</span>
-                            <span class="tech-stack-tag">Tailwind</span>
+                        <div class="tech-item animate-scale animate-delay-2">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="card p-4">
-                        <h4 class="fw-bold mb-3"><i class="fas fa-bus me-2 text-primary"></i>Bus Ops System</h4>
-                        <ul class="small text-muted ps-3">
-                            <li>Operational route planning logic.</li>
-                            <li>Automated passenger trip calculations.</li>
-                            <li>Reliable trip data recording.</li>
-                        </ul>
-                        <div class="mt-3">
-                            <span class="tech-stack-tag">MySQL</span>
-                            <span class="tech-stack-tag">PHP Logic</span>
+                        <div class="tech-item animate-scale animate-delay-3">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
                         </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <section id="education" class="py-5 bg-light">
-        <div class="container py-4">
-            <h2 class="section-title">Education</h2>
-            <div class="card p-4 border-0 shadow-sm">
-                <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
-                    <div>
-                        <h4 class="fw-bold mb-1">University of Mindanao - Digos College</h4>
-                        <p class="text-primary fw-600 mb-0">Bachelor of Science in Information Technology</p>
-                    </div>
-                    <div class="mt-3 mt-md-0">
-                        <span class="badge bg-primary rounded-pill px-4 py-2">2022 – 2026</span>
+                        <div class="tech-item animate-scale animate-delay-4">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <button class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-    </button>
+    <!-- Projects Section -->
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <div class="section-header animate-on-scroll">
+                <h2 class="section-title-modern">Featured Projects</h2>
+                <div style="width: 60px; height: 4px; background: var(--accent); margin: 0 auto; border-radius: 2px;">
+                </div>
+                <p class="text-muted mt-3">Selected works showcasing complex system architecture.</p>
+            </div>
 
+            <div class="row g-4">
+                <!-- Project 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card animate-slide-up animate-delay-1">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-dumbbell"></i>
+                            </div>
+                            <h5 class="fw-bold text-white mb-1">Gym Management</h5>
+                            <small class="text-primary">SaaS Platform</small>
+                        </div>
+                        <div class="project-body">
+                            <p class="text-muted mb-0">
+                                Comprehensive web platform for gym management featuring membership tracking, trainer
+                                scheduling, and interactive financial dashboards.
+                            </p>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Blade Template</span>
+                            <span class="tag">MySQL</span>
+                            <span class="tag">Chart.js</span>
+                            <span class="tag">Bootstrap</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card animate-slide-up animate-delay-2">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-store"></i>
+                            </div>
+                            <h5 class="fw-bold text-white mb-1">Zeraynce</h5>
+                            <small class="text-primary">Service Marketplace</small>
+                        </div>
+                        <div class="project-body">
+                            <p class="text-muted mb-0">
+                                Marketplace connecting studios & freelancers. Features real-time booking, chat
+                                messaging, KYC, and secure payment processing.
+                            </p>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Blade Template</span>
+                            <span class="tag">WebSockets</span>
+                            <span class="tag">PayMongo</span>
+                            <span class="tag">Cloudflare R2</span>
+                            <span class="tag">Tailwind</span>
+                            <span class="tag">Aplhine JS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card animate-slide-up animate-delay-3">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <h5 class="fw-bold text-white mb-1">Groq AI Chat</h5>
+                            <small class="text-primary">AI Integration</small>
+                        </div>
+                        <div class="project-body">
+                            <p class="text-muted mb-0">
+                                AI-powered chatbot integrating the Groq API for real-time conversational support with a
+                                modern, responsive UI.
+                            </p>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Blade Template</span>
+                            <span class="tag">Groq API</span>
+                            <span class="tag">Tailwind</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card animate-slide-up animate-delay-4">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-bus"></i>
+                            </div>
+                            <h5 class="fw-bold text-white mb-1">Bus Transport System</h5>
+                            <small class="text-primary">Logistics System</small>
+                        </div>
+                        <div class="project-body">
+                            <p class="text-muted mb-0">
+                                Web-based bus management system supporting scheduling, route planning, driver
+                                management, and passenger tracking.
+                            </p>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">Laravel</span>
+                            <span class="tag">Tailwind</span>
+                            <span class="tag">Blade Template</span>
+                            <span class="tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5">
+                <a href="https://github.com/aliazercasan" target="_blank" class="btn-modern btn-outline-modern">
+                    <i class="fab fa-github me-2"></i> View More on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container text-center">
+            <h2 class="section-title-modern mb-5">Let's Build Something Amazing</h2>
+            <div class="d-flex justify-content-center gap-4 mb-5">
+                <a href="mailto:solaimanaliazermain@gmail.com"
+                    class="text-white text-decoration-none d-flex align-items-center gap-2" style="font-size: 1.1rem;">
+                    <i class="fas fa-envelope text-primary"></i>
+                    <span>solaimanaliazermain@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/aliazer-solaiman" target="_blank"
+                    class="text-white text-decoration-none d-flex align-items-center gap-2" style="font-size: 1.1rem;">
+                    <i class="fab fa-linkedin text-primary"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+
+            <hr style="border-color: rgba(255,255,255,0.1); margin: 3rem 0;">
+
+            <p class="text-muted small mb-0">
+                &copy; 2024 Aliazer Casan Solaiman. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = themeToggle.querySelector('i');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Animation Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll, .animate-fade-in, .animate-slide-left, .animate-slide-right, .animate-scale, .animate-bounce-in, .animate-slide-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(3, 7, 18, 0.95)';
+                navbar.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(3, 7, 18, 0.85)';
+                navbar.style.boxShadow = 'none';
+            }
         });
     </script>
 </body>
+
 </html>

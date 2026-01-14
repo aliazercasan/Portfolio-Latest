@@ -5,66 +5,82 @@
 <title>Aliazer Casan P. Solaiman– Software Developer</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 @page {
-  size: 210mm 297mm;
-  margin: 15mm;
+  size: A4;
+  margin: 12mm;
 }
 
 @media print {
-  body { background: #fff; margin: 0; }
+  body { 
+    background: #fff; 
+    margin: 0;
+    padding: 0;
+  }
+  .page {
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  }
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 11pt;
-  line-height: 1.38;
+  font-size: 10pt;
+  line-height: 1.3;
   color: #000;
+  margin: 0;
+  padding: 0;
 }
 
 .page {
-  max-width: 180mm;
+  max-width: 210mm;
   margin: auto;
+  padding: 12mm;
 }
 
 /* HEADER */
 header {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 
 header h1 {
-  font-size: 24pt;
+  font-size: 20pt;
   margin: 0;
   text-transform: uppercase;
 }
 
 header h2 {
-  font-size: 12pt;
+  font-size: 11pt;
   font-weight: normal;
-  margin: 2px 0 6px;
+  margin: 2px 0 4px;
 }
 
 .contact {
   display: flex;
   justify-content: center;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
-  font-size: 10pt;
+  font-size: 9pt;
 }
 
 /* SECTIONS */
-section { margin-bottom: 10px; }
+section { margin-bottom: 6px; }
 
 section h3 {
-  font-size: 14pt;
+  font-size: 12pt;
   font-weight: bold;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
   text-transform: uppercase;
 }
 
 .divider {
   border-bottom: 1.5pt solid #000;
-  margin-bottom: 6px;
+  margin-bottom: 3px;
 }
 
 /* FLEX ROW */
@@ -76,19 +92,19 @@ section h3 {
 
 .date {
   font-style: italic;
-  font-size: 10.5pt;
+  font-size: 9.5pt;
 }
 
 /* LISTS */
 ul {
-  margin: 4px 0 6px 16px;
+  margin: 2px 0 4px 16px;
   padding: 0;
 }
 
-li { margin-bottom: 2px; }
+li { margin-bottom: 1px; }
 
 /* SKILLS */
-.skills p { margin: 2px 0; }
+.skills p { margin: 1px 0; }
 .skills strong { font-weight: bold; }
 </style>
 </head>
@@ -97,7 +113,7 @@ li { margin-bottom: 2px; }
 <div class="page">
 
 <header>
-  <h1>Aliazer Casan</h1>
+  <h1>Aliazer Casan P. Solaiman</h1>
   <h2>Software Developer</h2>
   <div class="contact">
     <span>Digos City, Davao del Sur</span>
