@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aliazer Casan P. Solaiman – Web Developer</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        @page {
+            size: A4;
+            margin: 12mm;
+        }
+
+        @media print {
+            body {
+                background: #fff;
+                margin: 0;
+                padding: 0;
+            }
+
+            .page {
+                margin: 0;
+                padding: 0;
+                max-width: 100%;
+            }
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10pt;
+            line-height: 1.3;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page {
+            max-width: 210mm;
+            margin: auto;
+            padding: 12mm;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            margin-bottom: 6px;
+        }
+
+        header h1 {
+            font-size: 20pt;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        header h2 {
+            font-size: 11pt;
+            font-weight: normal;
+            margin: 2px 0 4px;
+        }
+
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 9pt;
+        }
+
+        /* SECTIONS */
+        section {
+            margin-bottom: 6px;
+        }
+
+        section h3 {
+            font-size: 12pt;
+            font-weight: bold;
+            margin-bottom: 1px;
+            text-transform: uppercase;
+        }
+
+        .divider {
+            border-bottom: 1.5pt solid #000;
+            margin-bottom: 3px;
+        }
+
+        /* FLEX ROW */
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+
+        .date {
+            font-style: italic;
+            font-size: 9.5pt;
+        }
+
+        /* LISTS */
+        ul {
+            margin: 2px 0 4px 16px;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 1px;
+        }
+
+        /* SKILLS */
+        .skills p {
+            margin: 1px 0;
+        }
+
+        .skills strong {
+            font-weight: bold;
+        }
+
+        /* QR CODES */
+        .qr-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 6px;
+            padding: 4px 0;
+        }
+
+        .qr-item {
+            text-align: center;
+            flex: 0 1 auto;
+            border: 1px solid #ddd;
+            padding: 8px;
+            background: #fafafa;
+        }
+
+        .qr-item img {
+            width: 70px;
+            height: 70px;
+            display: block;
+            margin: 0 auto 4px;
+            border: 2px solid #000;
+        }
+
+        .qr-item p {
+            margin: 0;
+            font-size: 8.5pt;
+            line-height: 1.3;
+        }
+
+        .qr-item strong {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 9pt;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <header>
+            <h1>Aliazer Casan P. Solaiman</h1>
+            <div class="contact">
+                <span>Digos City, Davao del Sur</span>
+                <span>solaimanaliazermain@gmail.com</span>
+                <span>0951 818 4296</span>
+            </div>
+        </header>
+
+        <section>
+            <h3>Profile Summary</h3>
+            <div class="divider"></div>
+            <p style="text-align:justify; margin:0;">
+                Creative and detail-oriented professional with a BS Information Technology degree. Skilled in graphics
+                and motion design, video editing, photo editing using Lightroom, and digital content creation, with hands-on experience using CapCut
+                and other creative tools. Adept in technical administration, encoding, troubleshooting, and proficient
+                in Google Workspace and Microsoft Suite. Committed to delivering high-quality content and efficient
+                technical solutions.
+            </p>
+        </section>
+
+        <section class="skills">
+            <h3>Technical Skills</h3>
+            <div class="divider"></div>
+            <p><strong>Video Editing & Motion Design:</strong> CapCut, basic animation, video enhancements</p>
+            <p><strong>Graphics Design:</strong> Motion graphics, creative content creation</p>
+            <p><strong>Technical Tools:</strong> Encoding, troubleshooting, system administration</p>
+            <p><strong>Office Productivity:</strong> Google Workspace (Docs, Sheets, Slides), Microsoft Office Suite (Word, Excel, PowerPoint)</p>
+            <p><strong>Creative & Technical Support:</strong> Technical administrative tasks, content formatting, media management</p>
+        </section>
+
+        <section>
+            <h3>Projects & Experience</h3>
+            <div class="divider"></div>
+
+            <div class="row">
+                <strong>TikTok Affiliate Marketing & Video Editor</strong>
+                <span class="date">2024 – Present</span>
+            </div>
+            <p style="margin:2px 0 4px;">
+                I have been working as a TikTok affiliate for 2 years, creating and promoting content to drive engagement and sales. I handle all aspects of video production, serving as the editor for my own content to ensure quality and consistency across all posts.
+            </p>
+        </section>
+
+        <section>
+            <h3>Education</h3>
+            <div class="divider"></div>
+
+            <div class="row">
+                <strong>University of Mindanao – Digos College</strong>
+                <span class="date">2022 – 2026</span>
+            </div>
+            <p>Bachelor of Science in Information Technology</p>
+        </section>
+
+        <section>
+            <h3>Social Media Portfolio</h3>
+            <div class="divider"></div>
+            <p style="margin:2px 0 6px; font-size:9pt;">Scan QR codes to view my TikTok content:</p>
+            <div class="qr-section">
+                <div class="qr-item">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://www.tiktok.com/@lime.man01?_r=1%26_t=ZS-93OVHTyV9vw" alt="QR Code 3">
+                    <p><strong>Personal Account</strong>@lime.man01</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</body>
+
+</html>
